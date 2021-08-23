@@ -7,12 +7,14 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { OutterNavigationComponent } from './components/navigation/outter-navigation/outter-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    OutterNavigationComponent
   ],
   imports: [
     BrowserModule,
