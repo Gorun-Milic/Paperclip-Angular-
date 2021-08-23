@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
   title = 'paperclip';
+  visible: boolean = true;
+
+  switch() {
+    this.visible = !this.visible;
+  }
 }
