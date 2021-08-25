@@ -7,22 +7,18 @@
             <input type="text" class="form-control" id="email" [(ngModel)]="product.name">
         </div>
         <div class="mb-3">
-            <label for="price" class="col-sm-2 col-form-label">Price</label>
-            <input type="number" class="form-control" id="price" [(ngModel)]="product.price">
-        </div>
-        <div class="mb-3">
             <label for="state" class="form-label">Category</label>
             <select class="form-select" [(ngModel)]="product.category">
-                <option *ngFor="let category of categories">{{category.name}}</option>
+                <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
+            <textarea class="form-control" id="description" rows="3" [(ngModel)]="product.description"></textarea>
         </div>
     </div>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button class="bnt btn-primary" mat-dutton mat-dialog-close>Add</button>
+    <button class="bnt btn-primary" mat-dutton mat-dialog-close (click)="addProduct()">Add</button>
 </mat-dialog-actions>
