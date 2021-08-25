@@ -17,23 +17,23 @@ export class UserService {
   register(user: User): Observable<User> {
     let queryParams = {};
 
-    queryParams = {
-      headers: this.headers,
-      observe: 'response',
-    };
+    // queryParams = {
+    //   headers: this.headers,
+    //   observe: 'response',
+    // };
 
-    return this.http.post<User>('http://localhost:8080/user/registration', user, queryParams);
+    return this.http.post<User>('http://localhost:8080/user/registration', user);
   }
 
   login(user: LoginDto): Observable<User> {
     alert('zeee');
     let queryParams = {};
 
-    queryParams = {
-      headers: this.headers,
-      observe: 'response',
-    };
+    // queryParams = {
+    //   headers: this.headers,
+    //   observe: 'response',
+    // };
 
-    return this.http.post<User>('http://localhost:8080/user/login', user, queryParams);
+    return this.http.post<User>('http://localhost:8080/user/login', user);
   }
 }

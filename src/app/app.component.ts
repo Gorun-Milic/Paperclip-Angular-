@@ -8,9 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   
   title = 'paperclip';
-  visible: boolean = true;
-
-  switch() {
-    this.visible = !this.visible;
-  }
+  
 }

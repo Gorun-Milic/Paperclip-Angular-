@@ -8,19 +8,32 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { OutterNavigationComponent } from './components/navigation/outter-navigation/outter-navigation.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { InnerNavigationComponent } from './components/navigation/inner-navigation/inner-navigation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationComponent,
     LoginComponent,
-    OutterNavigationComponent
+    OutterNavigationComponent,
+    MyProfileComponent,
+    HomePageComponent,
+    InnerNavigationComponent,
+    AddProductComponent
   ],
+  entryComponents: [AddProductComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
