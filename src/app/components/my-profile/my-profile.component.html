@@ -11,3 +11,19 @@
 <div class="container">
     <button class="btn btn-primary" (click)="openDialog()">Add product</button>
 </div>
+
+<div class="container">
+   
+    <div *ngFor="let product of myProducts">
+        {{product.name}}
+        {{product.description}}
+        <img src="{{'data:image/jpeg;base64,' + product.photo}}">
+    </div>
+
+    <div>
+        {{product.name}}
+        {{product.photo}}
+        <img src="{{'data:image/jpeg;base64,' + product.photo}}">
+    </div>
+    
+</div>

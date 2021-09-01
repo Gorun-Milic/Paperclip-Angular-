@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  user = new User('John', 'Joe', 'john@email.com', 'john2211', 'Serbia', 'Belgrade', '2100');
+  user = new User('', 'John', 'Joe', 'john@email.com', 'john2211', 'Serbia', 'Belgrade', '2100');
 
   states = ['Algeria', 'Belgium', 'Belarus', 'Brasil', 'Chile', 'Croatia', 'Cyprus', 'Denmark', 'England', 'Finland', 'Ghana', 'Serbia', 'Slovakia', 'Sweden', 'Tunis', 'Wels'];
 

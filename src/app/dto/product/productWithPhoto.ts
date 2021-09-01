@@ -1,11 +1,13 @@
 import { Category } from "../category/category";
+import { Photo } from "../photo";
 import { User } from "../user/user";
 
-export class Product {
+export class ProductWithPhoto {
     constructor(
         public name: string, 
         public description: string, 
         public category: Category,
         public user: User,
+        public photo: string
     ){}
 }

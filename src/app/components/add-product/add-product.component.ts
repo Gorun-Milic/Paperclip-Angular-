@@ -16,9 +16,11 @@ export class AddProductComponent implements OnInit {
 
   user: User;
 
-  product: Product = new Product('','', new Category('', ''), new User('', '', '', '', '', '', ''));
+  product: Product = new Product('','', new Category('', ''), new User('', '', '', '', '', '', '', ''));
 
   categories: Category[];
+
+  selectedFile;
 
   constructor(private categoryService: CategoryService, 
               private userStorageService: UserStorageService, 
@@ -34,8 +36,15 @@ export class AddProductComponent implements OnInit {
     );
   }
 
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
   addProduct() {
-    this.productService.addProduct(this.product).subscribe(
+    let formData = new FormData();
+    formData.append('photo', this.selectedFile);
+    formData.append('product', JSON.stringify(this.product));
+    this.productService.addProduct(formData).subscribe(
       (res)=>{
         alert('Product was added.');
         this.dialogRef.close()},

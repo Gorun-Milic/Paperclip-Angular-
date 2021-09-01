@@ -16,6 +16,10 @@
             <label for="description" class="form-label">Description</label>
             <textarea class="form-control" id="description" rows="3" [(ngModel)]="product.description"></textarea>
         </div>
+        <div class="mb-3">
+            <input style="display: none;" #inputFileButton type="file" (change)="onFileChanged($event)">
+            <div class="btn btn-light" (click)="inputFileButton.click()">Choose File</div>
+        </div>
     </div>
 
 </mat-dialog-content>
