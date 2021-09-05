@@ -1,6 +1,7 @@
 export class Category {
     constructor(
+        public id: string,
         public name: string, 
-        public isProduct: string
+        public isProduct: boolean
     ){}
 }

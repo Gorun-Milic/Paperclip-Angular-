@@ -14,6 +14,10 @@ import { InnerNavigationComponent } from './components/navigation/inner-navigati
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { SearchProductsComponent } from './components/search/search-products/search-products.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ViewProductComponent } from './components/view-product/view-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { AddProductComponent } from './components/add-product/add-product.compon
     MyProfileComponent,
     HomePageComponent,
     InnerNavigationComponent,
-    AddProductComponent
+    AddProductComponent,
+    SearchProductsComponent,
+    SignUpComponent,
+    FooterComponent,
+    ViewProductComponent
   ],
   entryComponents: [AddProductComponent],
   imports: [

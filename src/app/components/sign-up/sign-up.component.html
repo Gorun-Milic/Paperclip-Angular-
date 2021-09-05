@@ -1,0 +1,10 @@
+<app-outter-navigation></app-outter-navigation>
+
+<div *ngIf="visible" class="container">
+    <app-login></app-login>
+    <p (click)="switch()">Don't have an account? Sign up here</p>
+</div>
+<div *ngIf="!visible" class="container">
+    <app-registration></app-registration>
+    <p (click)="switch()">Already have an account? Login here</p>
+</div>

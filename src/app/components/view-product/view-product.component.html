@@ -1,0 +1,50 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="container">
+
+    <div class="row">
+        <div class="product-box">
+            <div class="image-part">
+                <img class="image-box" *ngIf="!product.photo; else elseBlock"
+                src="../../../assets/images/profile photo.jpg">
+                <ng-template #elseBlock>
+                    <img class="image-box" src="{{'data:image/jpeg;base64,' + product.photo}}">
+                </ng-template>
+            </div>
+
+            <div class="data-part">
+                <h3>
+                    {{product.name}}
+                </h3>
+                <h6>Description: {{product.description}}</h6>
+                <h6>Category: {{product.category.name}}</h6>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="row">
+        <h4>Comments:</h4>
+        <div class="form-box">
+            <form>
+                <div class="mb-3">
+                    <label for="text" class="form-label">Add comment</label>
+                    <textarea class="form-control" id="text" name="text" rows="3" [(ngModel)]="comment.text"></textarea>
+                </div>
+                <button (click)="addComment()" class="btn btn-primary">Comment</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <figure class="comment" *ngFor="let comment of comments">
+            <blockquote class="blockquote">
+                <p>{{comment.text}}</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+                <cite title="Source Title">{{comment.user.firstName}}</cite>
+            </figcaption>
+        </figure>
+    </div>
+
+</div>

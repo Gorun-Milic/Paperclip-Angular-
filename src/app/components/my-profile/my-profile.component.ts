@@ -17,13 +17,17 @@ export class MyProfileComponent implements OnInit {
   user: User;
   myProducts: ProductWithPhoto[];
 
-  product: ProductWithPhoto;
+  
 
   constructor(private userStorageService: UserStorageService, 
               private dialog: MatDialog,
               private productService: ProductService) { }
 
   ngOnInit() {
+      this.getUserData();
+  }
+
+  getUserData() {
     this.user = this.userStorageService.getUser();
     this.productService.getProductsOfUser(this.userStorageService.getUser()).subscribe(
       (res)=>{
@@ -32,15 +36,18 @@ export class MyProfileComponent implements OnInit {
       (err)=>{
         console.error("Some error occured!");
       }
-    );
-    this.productService.getProduct("ef21a3c1-6b8f-4069-87ce-02d7767dd718").subscribe(
-      (res=>{this.product = res})
-    );
-    
+    );  
   }
 
   openDialog() {
-    this.dialog.open(AddProductComponent);
+    let dialogRef = this.dialog.open(AddProductComponent);
+
+    dialogRef.afterClosed().subscribe(
+      (res) => {
+        if (res === "yes") {
+          this.getUserData();        }
+      }
+    )
   }
 
 }

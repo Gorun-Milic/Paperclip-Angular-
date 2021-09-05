@@ -16,7 +16,7 @@ export class AddProductComponent implements OnInit {
 
   user: User;
 
-  product: Product = new Product('','', new Category('', ''), new User('', '', '', '', '', '', '', ''));
+  product: Product = new Product('','', new Category('', '', true), new User('', '', '', '', '', '', '', ''));
 
   categories: Category[];
 
@@ -47,10 +47,12 @@ export class AddProductComponent implements OnInit {
     this.productService.addProduct(formData).subscribe(
       (res)=>{
         alert('Product was added.');
-        this.dialogRef.close()},
+        this.dialogRef.close('yes');
+      },
       (err)=>{
         alert('Can not add product.');
-        this.dialogRef.close()}
+        this.dialogRef.close()
+      }
     );
   }
 

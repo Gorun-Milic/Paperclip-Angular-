@@ -1,11 +1,13 @@
 <app-inner-navigation></app-inner-navigation>
 <div class="container">
-    <div>First Name: {{user.firstName}}</div>
-    <div>Last Name: {{user.lastName}}</div>
-    <div>Email: {{user.email}}</div>
-    <div>Country: {{user.country}}</div>
-    <div>City: {{user.city}}</div>
-    <div>Zip Code: {{user.zipcode}}</div>
+    <div class="profile-info">
+        <div>First Name: {{user.firstName}}</div>
+        <div>Last Name: {{user.lastName}}</div>
+        <div>Email: {{user.email}}</div>
+        <div>Country: {{user.country}}</div>
+        <div>City: {{user.city}}</div>
+        <div>Zip Code: {{user.zipcode}}</div>
+    </div>
 </div>
 
 <div class="container">
@@ -13,17 +15,23 @@
 </div>
 
 <div class="container">
-   
-    <div *ngFor="let product of myProducts">
-        {{product.name}}
-        {{product.description}}
-        <img src="{{'data:image/jpeg;base64,' + product.photo}}">
-    </div>
-
-    <div>
-        {{product.name}}
-        {{product.photo}}
-        <img src="{{'data:image/jpeg;base64,' + product.photo}}">
+     
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-12" *ngFor="let product of myProducts">
+            <div class="card" style="width: 17rem;">
+                <img class="card-img-top" *ngIf="!product.photo; else elseBlock" src="../../../assets/images/profile photo.jpg">
+                <ng-template #elseBlock>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product.photo}}">
+                </ng-template>
+                <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.category.name}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Save</li>
+                </ul>
+            </div>
+        </div>
     </div>
     
 </div>

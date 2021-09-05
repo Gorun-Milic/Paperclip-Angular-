@@ -1,0 +1,55 @@
+<app-inner-navigation></app-inner-navigation>
+<div class="container">
+   
+    <div class="row">
+        <div class="form-box">
+            <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="searchProduct.name">
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">Category</label>
+                    <select class="form-select" name="category" [(ngModel)]="searchProduct.category">
+                        <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="state" class="form-label">Type</label>
+                    <select class="form-select" name="isProduct" [(ngModel)]="searchProduct.isProduct">
+                        <option value="{{true}}">{{'Product'}}</option>
+                        <option value="{{false}}">{{'Service'}}</option>
+                    </select>
+                </div>
+                <button (click)="searchProducts()" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-12" *ngFor="let product of products">
+            <div class="card" style="width: 17rem;">
+                <img class="card-img-top" *ngIf="!product.photo; else elseBlock" src="../../../assets/images/profile photo.jpg">
+                <ng-template #elseBlock>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product.photo}}">
+                </ng-template>
+                <div class="card-body" (click)="showProduct(product.id)">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.category.name}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Save</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="buttons">
+            <div class="arrowButton" (click)="previousPage()">&#8592;</div>
+            <div class="currPage">{{searchProduct.currentPage}}</div>
+            <div class="arrowButton" (click)="nextPage()">&#8594;</div>
+        </div>
+    </div>
+    
+</div>

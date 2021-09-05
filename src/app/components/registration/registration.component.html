@@ -1,33 +1,35 @@
 <div class="container">
-    <div class="mb-3">
-        <label for="firstName" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName">
+    <div class="form-box">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName">
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="user.email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="user.password">
+        </div>
+        <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <select class="form-select" [(ngModel)]="user.country">
+                <option *ngFor="let state of states">{{state}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" [(ngModel)]="user.city">
+        </div>
+        <div class="mb-3">
+            <label for="zipcode" class="form-label">Zip Code</label>
+            <input type="number" class="form-control" id="zipcode" [(ngModel)]="user.zipcode">
+        </div>
+        <button class="btn btn-primary" (click)="register()">Register</button>
     </div>
-    <div class="mb-3">
-        <label for="lastName" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName">
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="user.email">
-    </div>
-    <div class="mb-3">
-        <label for="password" class="col-sm-2 col-form-label">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="user.password">
-      </div>
-    <div class="mb-3">
-        <label for="state" class="form-label">State</label>
-        <select class="form-select" [(ngModel)]="user.country">
-            <option *ngFor="let state of states">{{state}}</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label for="city" class="form-label">City</label>
-        <input type="text" class="form-control" id="city" [(ngModel)]="user.city">
-    </div>
-    <div class="mb-3">
-        <label for="zipcode" class="form-label">Zip Code</label>
-        <input type="number" class="form-control" id="zipcode" [(ngModel)]="user.zipcode">
-    </div>
-    <button class="btn btn-primary" (click)="register()">Register</button>
 </div>

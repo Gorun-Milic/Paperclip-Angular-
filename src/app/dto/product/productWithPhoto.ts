@@ -4,6 +4,7 @@ import { User } from "../user/user";
 
 export class ProductWithPhoto {
     constructor(
+        public id: string,
         public name: string, 
         public description: string, 
         public category: Category,

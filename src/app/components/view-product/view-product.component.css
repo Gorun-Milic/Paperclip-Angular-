@@ -1,0 +1,50 @@
+.image-box {
+    border-radius: 300px;
+    object-fit: cover;
+    height: 12rem;
+    width: 12rem;
+    border: solid 0.3rem rgb(100, 100, 100);
+}
+
+.row {
+    margin: 2rem;
+}
+
+.product-box {
+    background-color: #e4e4e4;
+    box-shadow: 1px 1px 10px #aaaaaa;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.btn {
+    margin-right: 0.3rem;
+}
+
+.image-part {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.data-part {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 3rem;
+}
+
+.comment {
+    background-color: #e4e4e4;
+    box-shadow: 1px 1px 10px #aaaaaa;
+    padding: 1rem;
+}
+
+.form-box {
+    background-color: #e4e4e4;
+    box-shadow: 1px 1px 10px #aaaaaa;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.row {
+    margin: 1rem;
+}
