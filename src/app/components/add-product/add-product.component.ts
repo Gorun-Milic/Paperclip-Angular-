@@ -16,7 +16,7 @@ export class AddProductComponent implements OnInit {
 
   user: User;
 
-  product: Product = new Product('','', new Category('', '', true), new User('', '', '', '', '', '', '', ''));
+  product: Product = new Product('','', new Category('', '', true), new User());
 
   categories: Category[];
 

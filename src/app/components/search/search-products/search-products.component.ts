@@ -16,7 +16,7 @@ export class SearchProductsComponent implements OnInit {
   categories: Category[];
   products: ProductWithPhoto[];
   total: number;
-  searchProduct: SearchProduct = new SearchProduct('', new Category('jafisgszdfzjkzflsdfad', 'Food', true), true, 1, 16);
+  searchProduct: SearchProduct = new SearchProduct('', undefined, true, 1, 16);
 
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
@@ -40,9 +40,6 @@ export class SearchProductsComponent implements OnInit {
   }
 
   searchProducts() {
-    console.log("Ime: " + this.searchProduct.name);
-    console.log("Kategorija: " + this.searchProduct.category.name);
-    console.log("Produkt?: " + this.searchProduct.isProduct);
     this.productService.pagination(this.searchProduct).subscribe(
       (res=>{
         this.products = res.products;
@@ -65,7 +62,6 @@ export class SearchProductsComponent implements OnInit {
   }
 
   showProduct(id: string) {
-    console.log("AAAAAAAAAAAAAAAAAA" + ": " + id);
     this.router.navigate(['/view-product', id]);
   }
 

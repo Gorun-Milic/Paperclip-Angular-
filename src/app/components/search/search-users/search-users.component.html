@@ -1,0 +1,51 @@
+<app-inner-navigation></app-inner-navigation>
+<div class="container">
+   
+    <div class="row">
+        <div class="form-box">
+            <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" name="name" [(ngModel)]="searchUser.name">
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <select class="form-select" name="country" [(ngModel)]="searchUser.country">
+                        <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" name="city" [(ngModel)]="searchUser.city">
+                </div>
+                <button (click)="searchUsers()" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-12" *ngFor="let user of users">
+            <div class="card" style="width: 17rem;">
+                <img class="card-img-top" *ngIf="!user.photo; else elseBlock" src="../../../assets/images/profile photo.jpg">
+                <ng-template #elseBlock>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + user.photo}}">
+                </ng-template>
+                <div class="card-body" (click)="showUser(user.id)">
+                    <h5 class="card-title">{{user.firstName}}</h5>
+                    <p class="card-text">{{user.city}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="buttons">
+                <div class="arrowButton" (click)="previousPage()">&#8592;</div>
+                <div class="currPage">{{searchUser.currentPage}}</div>
+                <div class="arrowButton" (click)="nextPage()">&#8594;</div>
+            </div>
+        </div>
+    </div>
+    
+</div>

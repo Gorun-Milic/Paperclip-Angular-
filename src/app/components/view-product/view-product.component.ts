@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { UserListDialogComponent } from 'src/app/components/user-list-dialog/user-list-dialog.component';
 import { Category } from 'src/app/dto/category/category';
 import { Comment } from 'src/app/dto/comment/comment';
+import { Likes } from 'src/app/dto/likes/likes';
+import { LikesDto } from 'src/app/dto/likes/likesDto';
 import { Product } from 'src/app/dto/product/product';
 import { ProductWithPhoto } from 'src/app/dto/product/productWithPhoto';
 import { User } from 'src/app/dto/user/user';
 import { CommentService } from 'src/app/services/comment.service';
+import { LikeService } from 'src/app/services/like.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
 
@@ -18,24 +23,27 @@ export class ViewProductComponent implements OnInit {
 
   productId: string;
   product: ProductWithPhoto;
-  comment: Comment = new Comment('', new Date(), new User('', '', '', '', '', '', '', ''), new Product('', '', new Category('', '', false), new User('', '', '', '', '', '', '', '')));
+  comment: Comment = new Comment('', new Date(), new User(), new Product('', '', new Category('', '', false), new User()));
   user: User;
   comments: Comment[];
-
-  // productId: string;
+  likes: Likes = new Likes();
+  likesDto: LikesDto = new LikesDto([], 0);
+  liked: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
               private userStorageService: UserStorageService,
               private commentService: CommentService,
+              private likesService: LikeService,
+              private dialog: MatDialog,
               ) { }
 
   ngOnInit() {
+    this.user = this.userStorageService.getUser();
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.productId = params.get('productid');
       this.getProduct();
     });
-    this.user = this.userStorageService.getUser();
   }
 
   getProduct() {
@@ -43,6 +51,8 @@ export class ViewProductComponent implements OnInit {
       (res)=>{
         this.product = res;
         this.getComments();
+        this.isLiked();
+        this.getLikes();
       },
       (err)=>{
         console.error(err);
@@ -54,7 +64,6 @@ export class ViewProductComponent implements OnInit {
     this.commentService.commentsForProduct(this.product).subscribe(
       (res)=>{
         this.comments = res;
-        this.getProduct();
       },
       (error)=>{
         console.error(error);
@@ -69,11 +78,69 @@ export class ViewProductComponent implements OnInit {
     this.commentService.addComment(this.comment).subscribe(
       (res)=>{
         this.comment.text = '';
+        this.getComments();
       },
       (err)=>{
         console.error(err);
       }
     );
+  }
+
+  isLiked() {
+    this.likes.product = this.product;
+    this.likes.user = this.user;
+  
+    this.likesService.isLiked(this.likes).subscribe(
+      (res)=>{
+        alert(res.id);
+        this.likes.id = res.id;
+        this.liked = true;
+      },
+      (err)=> {
+          this.liked = false;
+        }
+    );
+  }
+
+  addLike() {
+    this.likes.product = this.product;
+    this.likes.user = this.user;
+    if (!this.liked) { 
+      this.likesService.addLike(this.likes).subscribe(
+        (res)=>{
+          this.isLiked();
+          this.getLikes();
+        },
+        (err)=>{
+          console.error(err);
+        });
+    }else {
+      this.likesService.dislike(this.likes.id).subscribe(
+        (res)=>{
+          this.isLiked();
+          this.getLikes();
+        },
+        (err)=>{
+          console.error(err);
+        });
+    }
+  }
+
+  getLikes() {
+    this.likesService.getLikes(this.product).subscribe(
+      (res)=>{
+        this.likesDto = res;
+      },
+      (err)=>{
+        console.error(err);
+      }
+    );
+  }
+
+  openUserListDialog() {
+    let dialogRef = this.dialog.open(UserListDialogComponent, {
+      data: { users: this.likesDto.users},
+    });
   }
 
 }

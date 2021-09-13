@@ -5,6 +5,7 @@ import { ProductWithPhoto } from 'src/app/dto/product/productWithPhoto';
 import { User } from 'src/app/dto/user/user';
 import { ProductService } from 'src/app/services/product.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
+import { UserService } from 'src/app/services/user.service';
 import { AddProductComponent } from '../add-product/add-product.component';
 
 @Component({
@@ -17,11 +18,18 @@ export class MyProfileComponent implements OnInit {
   user: User;
   myProducts: ProductWithPhoto[];
 
+  //photo data
+  public selectedFile;
+  convertedImage = undefined;
+  buttonDisabled = true;
+
   
 
   constructor(private userStorageService: UserStorageService, 
               private dialog: MatDialog,
-              private productService: ProductService) { }
+              private productService: ProductService,
+              private userService: UserService
+              ) { }
 
   ngOnInit() {
       this.getUserData();
@@ -36,7 +44,10 @@ export class MyProfileComponent implements OnInit {
       (err)=>{
         console.error("Some error occured!");
       }
-    );  
+    );
+    if (this.user.photo != undefined) {
+      this.convertedImage = 'data:image/jpeg;base64,' + this.user.photo;
+    }  
   }
 
   openDialog() {
@@ -48,6 +59,28 @@ export class MyProfileComponent implements OnInit {
           this.getUserData();        }
       }
     )
+  }
+
+  //adding photo mehods
+  public onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    this.buttonDisabled = false;
+  }
+
+  // This part is for uploading
+  uploadPhoto() {
+    let formData = new FormData();
+    formData.append('photo', this.selectedFile);
+    formData.append('userId', this.user.id);
+    this.userService.changePhoto(formData).subscribe(
+      (res)=>{
+        this.userStorageService.saveUser(res);
+        this.getUserData();
+      },
+      (err)=>{
+        console.error("Can not change photo");
+      }
+    );
   }
 
 }

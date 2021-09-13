@@ -17,8 +17,8 @@
                 <div class="mb-3">
                     <label for="state" class="form-label">Type</label>
                     <select class="form-select" name="isProduct" [(ngModel)]="searchProduct.isProduct">
-                        <option value="{{true}}">{{'Product'}}</option>
-                        <option value="{{false}}">{{'Service'}}</option>
+                        <option [ngValue]="true">{{'Product'}}</option>
+                        <option [ngValue]="false">{{'Service'}}</option>
                     </select>
                 </div>
                 <button (click)="searchProducts()" class="btn btn-primary">Search</button>
@@ -45,10 +45,12 @@
     </div>
 
     <div class="row">
-        <div class="buttons">
-            <div class="arrowButton" (click)="previousPage()">&#8592;</div>
-            <div class="currPage">{{searchProduct.currentPage}}</div>
-            <div class="arrowButton" (click)="nextPage()">&#8594;</div>
+        <div class="col">
+            <div class="buttons">
+                <div class="arrowButton" (click)="previousPage()">&#8592;</div>
+                <div class="currPage">{{searchProduct.currentPage}}</div>
+                <div class="arrowButton" (click)="nextPage()">&#8594;</div>
+            </div>
         </div>
     </div>
     

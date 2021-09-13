@@ -18,6 +18,9 @@ import { SearchProductsComponent } from './components/search/search-products/sea
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ViewProductComponent } from './components/view-product/view-product.component';
+import { UserListDialogComponent } from './components/user-list-dialog/user-list-dialog.component';
+import { SearchUsersComponent } from './components/search/search-users/search-users.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,12 @@ import { ViewProductComponent } from './components/view-product/view-product.com
     SearchProductsComponent,
     SignUpComponent,
     FooterComponent,
-    ViewProductComponent
+    ViewProductComponent,
+    UserListDialogComponent,
+    SearchUsersComponent,
+    ViewUserComponent
   ],
-  entryComponents: [AddProductComponent],
+  entryComponents: [AddProductComponent, UserListDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

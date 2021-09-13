@@ -1,8 +1,8 @@
 .image-box {
     border-radius: 300px;
     object-fit: cover;
-    height: 12rem;
-    width: 12rem;
+    height: 10rem;
+    width: 10rem;
     border: solid 0.3rem rgb(100, 100, 100);
 }
 
@@ -47,4 +47,13 @@
 
 .row {
     margin: 1rem;
+}
+
+.numberOfLikes {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.3rem;
+    background-color: #dddddd;
+    cursor: pointer;
+    border-radius: 4px;
 }

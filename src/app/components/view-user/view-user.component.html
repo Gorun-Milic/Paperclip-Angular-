@@ -1,17 +1,13 @@
 <app-inner-navigation></app-inner-navigation>
+
 <div class="container">
     <div class="profile-info">
         <div class="image-part">
-            <img class="image-box" *ngIf="!convertedImage; else profileImageBlock" src="../../../assets/images/profile photo.jpg"
+            <img class="image-box" *ngIf="!user.photo; else profileImageBlock" src="../../../assets/images/profile photo.jpg"
               height="150" width="150">
             <ng-template #profileImageBlock>
-              <img class="image-box" [src]="convertedImage" height="150" width="150">
+              <img class="image-box" src="{{'data:image/jpeg;base64,' + user.photo}}" height="150" width="150">
             </ng-template>
-            <div class="button-part">
-                <input style="display: none;" #inputFileButton type="file" (change)="onFileChanged($event)">
-                <button class="btn btn-light" (click)="inputFileButton.click()">Choose File</button>
-                <button class="btn btn-primary" [disabled]="buttonDisabled" #uploadButton (click)="uploadPhoto()">Upload</button>
-            </div>
           </div>
 
           <div class="content-part">
@@ -25,14 +21,9 @@
     </div>
 </div>
 
-<div class="container">
-    <button class="btn btn-primary" (click)="openDialog()">Add product</button>
-</div>
-
-<div class="container">
-     
+<div class="container"> 
     <div class="row">
-        <div class="col-md-3 col-sm-12 col-12" *ngFor="let product of myProducts">
+        <div class="col-md-3 col-sm-12 col-12" *ngFor="let product of products">
             <div class="card" style="width: 17rem;">
                 <img class="card-img-top" *ngIf="!product.photo; else elseBlock" src="../../../assets/images/profile photo.jpg">
                 <ng-template #elseBlock>
@@ -47,6 +38,5 @@
                 </ul>
             </div>
         </div>
-    </div>
-    
+    </div>  
 </div>
