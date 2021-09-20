@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginDto = new LoginDto('example@email.com', 'examplePassword');
+  loginDto = new LoginDto('', '');
 
   constructor(private userService: UserService, 
               private userStorageService: UserStorageService,
@@ -23,9 +23,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.loginDto).subscribe(
       (res=>{
-        console.log(res);
-        this.userStorageService.saveUser(res);
-        this.router.navigate(['my-profile']);
+        localStorage.setItem('jwt-token', res.access_token);
+        this.userService.getUserFromJwt().subscribe(
+          (res)=>{
+            this.userStorageService.saveUser(res);
+            this.router.navigate(['my-profile']);
+          }
+        )
       }),
       (err=>{
         console.error('Error while login!');

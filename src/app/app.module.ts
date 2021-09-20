@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { OutterNavigationComponent } from './components/navigation/outter-navigation/outter-navigation.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
@@ -21,6 +21,7 @@ import { ViewProductComponent } from './components/view-product/view-product.com
 import { UserListDialogComponent } from './components/user-list-dialog/user-list-dialog.component';
 import { SearchUsersComponent } from './components/search/search-users/search-users.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
+import { JwtTokenInterceptor } from './interceptors/jwt-token';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
     BrowserAnimationsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

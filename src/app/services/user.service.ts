@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { JwtDto } from '../dto/jwtDto';
 import { LoginDto } from '../dto/user/loginDto';
 import { SearchUser } from '../dto/user/searchUser';
 import { User } from '../dto/user/user';
@@ -24,8 +25,16 @@ export class UserService {
     return this.http.post<User>('http://localhost:8080/user/registration', user);
   }
 
-  login(user: LoginDto): Observable<User> {
-    return this.http.post<User>('http://localhost:8080/user/login', user);
+  // login(user: LoginDto): Observable<User> {
+  //   return this.http.post<User>('http://localhost:8080/user/login', user);
+  // }
+
+  login(loginDto: LoginDto): Observable<JwtDto> {
+    return this.http.post<JwtDto>('http://localhost:8080/auth/login', loginDto);
+  }
+
+  getUserFromJwt(): Observable<User> {
+    return this.http.get<User>('http://localhost:8080/auth/getUserFromJwt');
   }
 
   changePhoto(formData: FormData): Observable<User> {
