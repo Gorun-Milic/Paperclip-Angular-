@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { UserListDialogComponent } from 'src/app/components/user-list-dialog/user-list-dialog.component';
 import { Category } from 'src/app/dto/category/category';
 import { Comment } from 'src/app/dto/comment/comment';
@@ -8,10 +8,12 @@ import { Likes } from 'src/app/dto/likes/likes';
 import { LikesDto } from 'src/app/dto/likes/likesDto';
 import { Product } from 'src/app/dto/product/product';
 import { ProductWithPhoto } from 'src/app/dto/product/productWithPhoto';
+import { Save } from 'src/app/dto/save/save';
 import { User } from 'src/app/dto/user/user';
 import { CommentService } from 'src/app/services/comment.service';
 import { LikeService } from 'src/app/services/like.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SaveService } from 'src/app/services/save.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
 
 @Component({
@@ -30,11 +32,16 @@ export class ViewProductComponent implements OnInit {
   likesDto: LikesDto = new LikesDto([], 0);
   liked: boolean = false;
 
+  save: Save = new Save();
+  saved: boolean = false;
+
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private productService: ProductService,
               private userStorageService: UserStorageService,
               private commentService: CommentService,
               private likesService: LikeService,
+              private saveService: SaveService,
               private dialog: MatDialog,
               ) { }
 
@@ -53,6 +60,7 @@ export class ViewProductComponent implements OnInit {
         this.getComments();
         this.isLiked();
         this.getLikes();
+        this.isSaved();
       },
       (err)=>{
         console.error(err);
@@ -92,7 +100,6 @@ export class ViewProductComponent implements OnInit {
   
     this.likesService.isLiked(this.likes).subscribe(
       (res)=>{
-        alert(res.id);
         this.likes.id = res.id;
         this.liked = true;
       },
@@ -138,9 +145,63 @@ export class ViewProductComponent implements OnInit {
   }
 
   openUserListDialog() {
-    let dialogRef = this.dialog.open(UserListDialogComponent, {
-      data: { users: this.likesDto.users},
-    });
+    if (this.likesDto.total>0) {
+      let dialogRef = this.dialog.open(UserListDialogComponent, {
+        data: { users: this.likesDto.users},
+      });
+    }
+  }
+
+  showUser(id: string) {
+    if (id===this.userStorageService.getUser().id) {
+      this.router.navigate(['my-profile']);
+    }else {
+      this.router.navigate(['/view-user', id]);
+    }
+  }
+
+  isSaved() {
+    this.save.product = this.product;
+    this.save.user = this.user;
+
+    console.log(this.save.product);
+    console.log(this.save.user);
+  
+    this.saveService.isSaved(this.save).subscribe(
+      (res)=>{
+        this.save = res;
+        this.saved = true;
+      },
+      (err)=>{
+        this.saved = false;
+        console.error("Product not saved. " + err);
+      }
+    );
+  }
+
+  addSave() {
+    this.save.product = this.product;
+    this.save.user = this.user;
+    if (!this.saved) {
+      this.saveService.save(this.save).subscribe(
+        (res)=>{
+          this.isSaved();
+        }
+      )
+    }
+  }
+
+  forget() {
+    if (this.saved) {
+      this.saveService.forget(this.save.id).subscribe(
+        (res)=>{
+          this.isSaved();
+        },
+        (err)=>{
+          console.error("Product not forgoten. " + err);
+        }
+      )
+    }
   }
 
 }

@@ -1,12 +1,183 @@
+.body {
+    margin: 0rem;
+}
+
 .text-box {
     color: rgb(43, 43, 43);
     padding: 2rem;
 }
 
+.container-bg {
+    background-color: rgb(194, 194, 194);
+    margin: 0rem;
+    padding: 2rem 1rem;
+}
+
+.container-bg-dark {
+    background-color: rgb(46, 46, 46);
+    margin: 0rem;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.content-boxes {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    /* margin-top: 3rem; */
+    /* margin-bottom: 3rem; */
+}
+
+.content-title {
+    font-size: 1.2rem;
+    color: slateblue;
+}
+
+.content-text {
+    height: 4rem;
+    margin-top: 1rem;
+    text-align: left;
+    /* overflow:scroll; */
+}
+
+.content-box {
+    width: 25%;
+    display: inline-block;
+    background-color: rgb(238, 238, 238);
+    padding: 1.5rem 2.8rem;
+    margin: 1rem 0.7rem;
+    border-radius: 0.7rem;
+    height: 20rem;
+    vertical-align: middle;
+}
+
+.content-box img {
+    width: 9rem;
+    margin-bottom: 0.9rem;
+}
+
+.backgorund-image {
+    background-color:  #d8d8d8;
+    background-image: url("../../../assets/images/bg6.jpg");
+    background-size: cover;
+    background-position: 0% 90%;
+    height: 35rem;
+    margin: 0;
+    position: relative;
+}
+
+.image-text {
+    position: absolute;
+    top: 19%;
+    left: 6%;
+}
+
+.image-title-text {
+    font-size: 3.2rem;
+    margin-bottom: 2.5rem;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    color: rgb(34, 34, 34);
+    font-family: 'Poppins'
+}
+
+.image-message-text {
+    font-style: normal;
+    font-size: 1.5rem;
+    color: rgb(34, 34, 34);
+    text-align: left;
+}
+
+.btn-overlay {
+    margin-top: 2.5rem;
+    font-size: 25px;
+    background-color: #e90027;
+    color: #fff;
+}
+
+.you-tube-iframe {
+    width: 560px;
+    height: 315px;
+}
+
 @media(max-width: 30rem) {
+
+    .container-bg {
+        align-items: center;
+    }
 
     /* Navigation */
     .d-block {
         height: 300px;
     }
+
+    /* Background Image */
+
+    .backgorund-image {
+        width: 100vw;
+        background-color:  #d8d8d8;
+        background-image: none;
+    }
+
+    .image-text {
+        position: absolute;
+        top: 19%;
+        left: 6%;
+        text-align: center;
+    }
+    
+    .image-title-text {
+        font-size: 45px;
+        margin-bottom: 2.5rem;
+        font-style: normal;
+        font-weight: bold;
+        text-align: center;
+        color: rgb(34, 34, 34);
+        font-family: 'Poppins'
+    }
+    
+    .image-message-text {
+        font-style: normal;
+        font-size: 1rem;
+        color: rgb(34, 34, 34);
+        text-align: center;
+    }
+    
+    .btn-overlay {
+        margin-top: 2.5rem;
+        font-size: 25px;
+        background-color: #e90027;
+        color: #fff;
+    }
+
+    /* Boxes */
+
+    .content-boxes {
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+    
+    .content-box {
+        margin: 3rem;
+        width: 70%;
+        display: block;
+    }
+
+    .content-box img {
+        width: 7rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .content-text {
+        font-size: 12px
+    }
+
+    /* YouTube iframe */
+    
+    .you-tube-iframe {
+        width: 300px;
+    }
+
 }

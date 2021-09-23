@@ -5,3 +5,11 @@
     box-shadow: 5px 5px 20px #a7a7a7;
     margin: 1rem;
 }
+
+input.ng-invalid.ng-touched  {
+    border-color: red;
+}
+
+input.ng-touched.ng-valid {
+    border-color: rgb(9, 185, 77);
+}

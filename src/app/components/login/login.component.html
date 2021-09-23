@@ -1,13 +1,16 @@
 <div class="container">
-    <div class="form-box">
+    <form class="form-box" [formGroup]="loginForm">
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" [(ngModel)]="loginDto.username">
+            <input type="email" class="form-control" formControlName="email" name="email">
+            <small *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched" class="text-danger">Enter valid email address</small>
         </div>
         <div class="mb-3">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
-            <input type="password" class="form-control" id="password" [(ngModel)]="loginDto.password">
+            <input type="password" class="form-control" formControlName="password" name="password">
+            <small *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched" class="text-danger">Password is required(8 characters min)</small>
+
         </div>
-        <button class="btn btn-primary" (click)="login()">Login</button>
-    </div>
+        <button [disabled]="loginForm.invalid" class="btn btn-primary" (click)="login()">Login</button>
+    </form>
 </div>

@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-3 col-sm-12 col-12" *ngFor="let product of products">
             <div class="card" style="width: 17rem;">
-                <img class="card-img-top" *ngIf="!product.photo; else elseBlock" src="../../../assets/images/profile photo.jpg">
+                <img class="card-img-top" *ngIf="!product.photo; else elseBlock" src="../../../../assets/images/no-photo.png">
                 <ng-template #elseBlock>
                     <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product.photo}}">
                 </ng-template>

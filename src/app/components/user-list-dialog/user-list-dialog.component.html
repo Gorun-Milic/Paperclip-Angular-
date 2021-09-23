@@ -1,1 +1,7 @@
-<div *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</div>
+<div (click)="showUser(user.id)" class="user-block" *ngFor="let user of users">
+    <img class="user-img"  *ngIf="user.photo; else elseBlock" src="{{'data:image/jpeg;base64,' + user.photo}}">
+    <ng-template #elseBlock>
+        <img class="user-img" src="../../../assets/images/profile photo.jpg">
+    </ng-template>
+    <div class="user-details">{{user.firstName}} {{user.lastName}}</div>
+</div>

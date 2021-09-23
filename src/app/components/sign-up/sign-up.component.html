@@ -2,9 +2,13 @@
 
 <div *ngIf="visible" class="container">
     <app-login></app-login>
-    <p (click)="switch()">Don't have an account? Sign up here</p>
+    <div class="message-box">
+        Don't have an account? <a class="link" (click)="switch()" style="color: #0011ff">Click here</a>
+    </div>
 </div>
 <div *ngIf="!visible" class="container">
-    <app-registration></app-registration>
-    <p (click)="switch()">Already have an account? Login here</p>
+    <app-registration (onRegister)="switch()"></app-registration>
+    <div class="message-box">
+        Already have an account? <a class="link" (click)="switch()" style="color: #0011ff">Click here</a>
+    </div>
 </div>

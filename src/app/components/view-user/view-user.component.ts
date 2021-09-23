@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductWithPhoto } from 'src/app/dto/product/productWithPhoto';
 import { User } from 'src/app/dto/user/user';
 import { ProductService } from 'src/app/services/product.service';
@@ -20,7 +20,8 @@ export class ViewUserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -51,6 +52,10 @@ export class ViewUserComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  showProduct(id: string) {
+    this.router.navigate(['/view-product', id]);
   }
 
 }
