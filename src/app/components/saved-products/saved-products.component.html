@@ -1,0 +1,22 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-12 col-12" *ngFor="let saved of savedProducts">
+            <div class="card" style="width: 17rem;">
+                <img class="card-img-top" *ngIf="!saved.product.photo; else elseBlock" src="../../../../assets/images/no-photo.png">
+                <ng-template #elseBlock>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + saved.product.photo}}">
+                </ng-template>
+                <div class="card-body" (click)="showProduct(saved.product.id)">
+                    <h5 class="card-title">{{saved.product.name}}</h5>
+                    <p class="card-text">{{saved.product.category.name}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" appSave [product]="saved.product">Save</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

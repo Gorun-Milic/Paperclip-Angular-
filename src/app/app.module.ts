@@ -23,6 +23,8 @@ import { SearchUsersComponent } from './components/search/search-users/search-us
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { JwtTokenInterceptor } from './interceptors/jwt-token';
 import { NotificationsDialogComponent } from './components/notifications-dialog/notifications-dialog.component';
+import { SavedProductsComponent } from './components/saved-products/saved-products.component';
+import { SaveDirective } from './directives/save.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { NotificationsDialogComponent } from './components/notifications-dialog/
     UserListDialogComponent,
     SearchUsersComponent,
     ViewUserComponent,
-    NotificationsDialogComponent
+    NotificationsDialogComponent,
+    SavedProductsComponent,
+    SaveDirective
   ],
   entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent],
   imports: [
