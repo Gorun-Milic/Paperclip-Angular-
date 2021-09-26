@@ -20,6 +20,10 @@
               <li><a [routerLink]="['/search/users']" class="dropdown-item" href="#">Search Users</a></li>
             </ul>
           </li>
+          <li (click)="openNotificationsDialog()" class="nav-item-notification">
+            <a aria-current="page" class="nav-link active">
+              Notifications <div class="notification">{{(notificationCount)}}</div></a>
+          </li>
           <!-- <li class="nav-item">
             <a [routerLink]="['/search/products']" routerLinkActive="active" aria-current="page" class="nav-link active">Search</a>
           </li> -->

@@ -12,6 +12,7 @@ import { Save } from 'src/app/dto/save/save';
 import { User } from 'src/app/dto/user/user';
 import { CommentService } from 'src/app/services/comment.service';
 import { LikeService } from 'src/app/services/like.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SaveService } from 'src/app/services/save.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
@@ -43,6 +44,7 @@ export class ViewProductComponent implements OnInit {
               private likesService: LikeService,
               private saveService: SaveService,
               private dialog: MatDialog,
+              private notificationService: NotificationService
               ) { }
 
   ngOnInit() {
@@ -61,11 +63,25 @@ export class ViewProductComponent implements OnInit {
         this.isLiked();
         this.getLikes();
         this.isSaved();
+        this,this.viewNotification();
       },
       (err)=>{
         console.error(err);
       }
     );
+  }
+
+  viewNotification() {
+    if (this.product.user.id===this.user.id) {
+      this.notificationService.viewNotifications(this.product).subscribe(
+        (res)=>{
+          console.log(res);
+        },
+        (err)=>{
+          console.error(err);
+        }
+      )
+    }
   }
 
   getComments() {

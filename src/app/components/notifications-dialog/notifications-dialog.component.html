@@ -1,0 +1,31 @@
+<div *ngIf="newNotifications.length===0" class="no-new-msg">No new notifications</div>
+<div (click)="openProduct(notification.product.id)" class="notification-block" *ngFor="let notification of newNotifications" mat-dialog-close>
+    <div *ngIf="notification.type==='like'">
+        <!-- <div class="circle"></div> -->
+        <div class="notification-text">
+            {{notification.product.name}} was liked by {{notification.user.firstName}}
+        </div>
+    </div>
+    <div *ngIf="notification.type==='comment'">
+        <!-- <div class="circle"></div> -->
+        <div class="notification-text">
+            {{notification.product.name}} was commented by {{notification.user.firstName}}
+        </div>
+    </div>
+</div>
+
+<div class="old-notification-block" *ngFor="let oldNotification of oldNotifications">
+    <div *ngIf="oldNotification.type==='like'">
+        <!-- <div class="circle"></div> -->
+        <div class="notification-text">
+            {{oldNotification.product.name}} was liked by {{oldNotification.user.firstName}}
+        </div>
+    </div>
+    <div *ngIf="oldNotification.type==='comment'">
+        <!-- <div class="circle"></div> -->
+        <div class="notification-text">
+            {{oldNotification.product.name}} was commented by {{oldNotification.user.firstName}}
+        </div>
+    </div>
+</div>
+<div *ngIf="buttonEnabled" class="button" (click)="getOldNotifications()">OPEN OLDER</div>

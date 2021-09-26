@@ -1,4 +1,4 @@
-<div (click)="showUser(user.id)" class="user-block" *ngFor="let user of users">
+<div (click)="showUser(user.id)" class="user-block" *ngFor="let user of users" mat-dialog-close>
     <img class="user-img"  *ngIf="user.photo; else elseBlock" src="{{'data:image/jpeg;base64,' + user.photo}}">
     <ng-template #elseBlock>
         <img class="user-img" src="../../../assets/images/profile photo.jpg">

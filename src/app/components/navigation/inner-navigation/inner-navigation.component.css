@@ -3,5 +3,23 @@
 }
 
 .navbar {
-    background-color: #ee2c2c;
+    /* background-color: #e73e3e; */
+    background-color: #e90027;
+}
+
+.notification {
+    border-radius: 20px;
+    padding: 0.2rem;
+    background-color: rgb(31, 19, 99);
+    color: #fff;
+    display: inline-block;
+    margin: 0;
+}
+
+.nav-item {
+    padding: 0.2rem;
+}
+
+.nav-item-notification {
+    cursor: pointer;
 }

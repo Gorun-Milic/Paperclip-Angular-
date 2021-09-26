@@ -1,0 +1,52 @@
+.notification-block {
+    background-color: #e2f8ff;
+    color: rgb(54, 54, 54);
+    box-shadow: 1px 1px 10px #cff1fc;
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin: 1rem;
+    border: solid 0.2rem #acddec;
+}
+
+.notification-block:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 10px #b2ddeb;
+}
+
+.old-notification-block {
+    background-color: rgb(230, 230, 230);
+    box-shadow: 1px 1px 10px #cfcfcf;
+    color: rgb(54, 54, 54);
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin: 1rem;
+}
+
+.notification-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1rem;
+}
+
+.button {
+    border-style: none;
+    background-color: rgb(194, 194, 194);
+    color: rgb(43, 43, 43);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin: 1rem;
+    text-align: center;
+}
+
+.circle {
+    background-color: rgb(15, 116, 231);
+    padding: 0.5rem;
+    border-radius: 300px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.no-new-msg {
+    font-style: italic;
+    color: #2c2c2c;
+}

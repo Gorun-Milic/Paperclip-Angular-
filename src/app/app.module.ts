@@ -22,6 +22,7 @@ import { UserListDialogComponent } from './components/user-list-dialog/user-list
 import { SearchUsersComponent } from './components/search/search-users/search-users.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { JwtTokenInterceptor } from './interceptors/jwt-token';
+import { NotificationsDialogComponent } from './components/notifications-dialog/notifications-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +40,10 @@ import { JwtTokenInterceptor } from './interceptors/jwt-token';
     ViewProductComponent,
     UserListDialogComponent,
     SearchUsersComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    NotificationsDialogComponent
   ],
-  entryComponents: [AddProductComponent, UserListDialogComponent],
+  entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

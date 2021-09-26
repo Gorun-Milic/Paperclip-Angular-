@@ -7,20 +7,17 @@
             <ng-template #profileImageBlock>
               <img class="image-box" [src]="convertedImage" height="150" width="150">
             </ng-template>
+          </div>
+
+          <div class="content-part">
+            <h3>{{user.firstName + " " + user.lastName}}</h3>
+            <div>{{user.city + "(" + user.country + ")"}}</div>
+            <div>{{user.email}}</div>
             <div class="button-part">
                 <input style="display: none;" #inputFileButton type="file" (change)="onFileChanged($event)">
                 <button class="btn btn-light" (click)="inputFileButton.click()">Choose File</button>
                 <button class="btn btn-primary" [disabled]="buttonDisabled" #uploadButton (click)="uploadPhoto()">Upload</button>
             </div>
-          </div>
-
-          <div class="content-part">
-            <div>First Name: {{user.firstName}}</div>
-            <div>Last Name: {{user.lastName}}</div>
-            <div>Email: {{user.email}}</div>
-            <div>Country: {{user.country}}</div>
-            <div>City: {{user.city}}</div>
-            <div>Zip Code: {{user.zipcode}}</div>
           </div>
     </div>
 </div>
