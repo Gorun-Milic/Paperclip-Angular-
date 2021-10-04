@@ -1,0 +1,50 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="msg-box">
+    <div class="msg-header">
+        <div class="chat-image-part">
+            <img class="chat-image-box" *ngIf="!otherUser.photo; else imageBlock" src="../../../assets/images/profile photo.jpg">
+            <ng-template #imageBlock>
+              <img class="chat-image-box" src="{{'data:image/jpeg;base64,' + otherUser.photo}}">
+            </ng-template>
+        </div>
+        <div class="name-part">{{otherUser.firstName + " " + otherUser.lastName}}</div>
+    </div>
+    <div #scrollMe class="msg-body" [scrollTop]="scrollMe.scrollHeight">
+        <div class="msg-container" *ngFor="let message of messages">
+            <div *ngIf="message.user.id===user.id" class="msg">
+                <div class="msg-image-part">
+                    <img class="msg-image-box" *ngIf="!message.user.photo; else msgImageBlock1" src="../../../assets/images/profile photo.jpg">
+                    <ng-template #msgImageBlock1>
+                    <img class="msg-image-box" src="{{'data:image/jpeg;base64,' + message.user.photo}}">
+                    </ng-template>
+                </div>
+                <div class="msg-text-container">
+                    <div class="msg-text-sent">
+                        {{message.text}}
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="message.user.id!==user.id" class="msg">
+                <div class="msg-image-part">
+                    <img class="msg-image-box" *ngIf="!message.user.photo; else msgImageBlock2" src="../../../assets/images/profile photo.jpg">
+                    <ng-template #msgImageBlock2>
+                    <img class="msg-image-box" src="{{'data:image/jpeg;base64,' + message.user.photo}}">
+                    </ng-template>
+                </div>
+                <div class="msg-text-container">
+                    <div class="msg-text-recieved">
+                        {{message.text}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="msg-form">
+        <form>
+            <textarea name="" class="text-area" rows="2" name="text" [(ngModel)]="message.text"></textarea>
+        </form>
+        <button class="btn btn-primary" (click)="sendMessage()">Send Message</button>
+    </div>
+</div>

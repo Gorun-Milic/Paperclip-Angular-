@@ -21,5 +21,6 @@
 }
 
 .nav-item-notification {
+    padding: 0.2rem;
     cursor: pointer;
 }

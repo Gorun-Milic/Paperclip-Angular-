@@ -1,0 +1,50 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="container">
+    <div class="chat" (click)="showChat(chat.id)" *ngFor="let chat of chats">    
+        <div *ngIf="chat.user1.id===user.id">
+            <div class="chat-image-box">
+                <img class="chat-image" *ngIf="!chat.user2.photo; else imageBlock" src="../../../assets/images/profile photo.jpg">
+                <ng-template #imageBlock>
+                <img class="chat-image" src="{{'data:image/jpeg;base64,' + chat.user2.photo}}">
+                </ng-template>
+            </div>
+
+            <div class="chat-data">
+                <div class="chat-name">
+                    {{chat.user2.firstName + " " + chat.user2.lastName}}
+                </div>
+                <div class="chat-text" appChat [chat]="chat">
+                    
+                </div>
+            </div>
+            
+            <div class="chat-notification">
+                <div class="chat-notification-circle" appMessageCount [chat]="chat">
+                    
+                </div>
+            </div>
+        </div>
+        <div *ngIf="chat.user1.id!==user.id">
+            <div class="chat-image-box">
+                <img class="chat-image" *ngIf="!chat.user1.photo; else imageBlock1" src="../../../assets/images/profile photo.jpg">
+                <ng-template #imageBlock1>
+                <img class="chat-image" src="{{'data:image/jpeg;base64,' + chat.user1.photo}}">
+                </ng-template>
+            </div>
+            <div class="chat-data">
+                <div class="chat-name">
+                    {{chat.user1.firstName + " " + chat.user1.lastName}}
+                </div>
+                <div class="chat-text" appChat [chat]="chat">
+                    
+                </div>
+            </div>
+            <div class="chat-notification">
+                <div class="chat-notification-circle" appMessageCount [chat]="chat">
+                    
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,106 @@
+.msg-box {
+    width: 80%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 1px 1px 17px rgb(141, 141, 141);
+}
+
+.msg-header {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem 1.4rem;
+    color: rgb(56, 56, 56);
+    /* border-top-left-radius: 20px;
+    border-top-right-radius: 20px; */
+}
+
+.msg-body {
+    height: 20rem;
+    background-color: rgb(243, 243, 243);
+    padding: 1rem;
+    overflow-y: scroll;
+}
+
+.msg-form {
+    background-color: rgb(255, 255, 255);
+    padding: 2rem 2rem;
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
+}
+
+.text-area {
+    width: 100%;
+    padding: 0.8rem;
+}
+
+.msg {
+  width: 100%;  
+}
+
+.msg-container {
+    width: 100%;
+    float: left;
+    margin: 0.7rem 0.3rem;
+}
+
+.msg-text-container {
+    width: 55%;
+    display: inline-block;
+}
+
+.msg-text-recieved {
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    color: rgb(32, 32, 32);
+    padding: 0.8rem;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 1px 1px 10px rgb(156, 156, 156);
+}
+
+.msg-text-sent {
+    display: inline-block;
+    background-color: rgb(23, 146, 218);
+    color: #fff;
+    padding: 0.8rem;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 1px 1px 10px rgb(196, 196, 196);
+}
+
+.name-part {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.chat-image-part {
+    display: inline-block;
+    
+}
+
+.chat-image-box {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 20px;
+}
+
+.msg-image-part {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 0.8rem;
+}
+
+.msg-image-box {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 20px;
+    box-shadow: 1px 1px 8px rgb(150, 150, 150);
+}
+
+@media(max-width: 30rem) {
+    .msg-text-container {
+        width: 80%;
+    }
+}

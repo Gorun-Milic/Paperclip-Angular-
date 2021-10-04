@@ -7,10 +7,12 @@
 }
 
 .card {
+    text-align: center;
     background-color: rgb(243, 243, 243);
     color: rgb(36, 36, 36);
-    margin: 1rem;
-    box-shadow: 1px 1px 10px #cfcfcf;
+    margin-top: 2rem;
+    box-shadow: 1px 1px 20px #a5a5a5;
+    margin-right: 0rem;
 }
 
 .card:hover {
@@ -21,11 +23,16 @@
 .container {
     /* margin: 0rem 10rem; */
     margin: auto;
+    align-items: center;
 }
 
 .row {
     margin-top: 1rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
 }
+
+
 
 .card-img-top {
     object-fit: cover;

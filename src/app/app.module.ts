@@ -25,6 +25,11 @@ import { JwtTokenInterceptor } from './interceptors/jwt-token';
 import { NotificationsDialogComponent } from './components/notifications-dialog/notifications-dialog.component';
 import { SavedProductsComponent } from './components/saved-products/saved-products.component';
 import { SaveDirective } from './directives/save.directive';
+import { ChatComponent } from './components/chat/chat.component';
+import { MessageDialogComponent } from './components/message-dialog/message-dialog.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { ChatDirective } from './directives/chat.directive';
+import { MessageCountDirective } from './directives/message-count.directive';
 
 @NgModule({
   declarations: [
@@ -45,9 +50,14 @@ import { SaveDirective } from './directives/save.directive';
     ViewUserComponent,
     NotificationsDialogComponent,
     SavedProductsComponent,
-    SaveDirective
+    SaveDirective,
+    ChatComponent,
+    MessageDialogComponent,
+    ChatListComponent,
+    ChatDirective,
+    MessageCountDirective
   ],
-  entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent],
+  entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent, MessageDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { SavedProductsComponent } from './components/saved-products/saved-products.component';
@@ -47,6 +49,14 @@ const routes: Routes = [
   {
     path: 'my-collection',
     component: SavedProductsComponent,
+  },
+  {
+    path: 'chat/:chatid',
+    component: ChatComponent,
+  },
+  {
+    path: 'chat-list',
+    component: ChatListComponent,
   },
   {
     path: '**',

@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3 col-sm-12 col-12" *ngFor="let saved of savedProducts">
+        <div class="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-center" *ngFor="let saved of savedProducts">
             <div class="card" style="width: 17rem;">
                 <img class="card-img-top" *ngIf="!saved.product.photo; else elseBlock" src="../../../../assets/images/no-photo.png">
                 <ng-template #elseBlock>

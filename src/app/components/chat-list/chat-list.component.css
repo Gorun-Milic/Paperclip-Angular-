@@ -1,0 +1,64 @@
+.chat {
+    background-color: rgb(251, 251, 251);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    box-shadow: 1px 1px 10px rgb(196, 196, 196);
+}
+
+.chat:hover {
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+}
+
+.chat-image-box {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.chat-image {
+    border: solid rgb(134, 134, 134) 0.15rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 30px;
+}
+
+.chat-data {
+    display: inline-block;
+    margin-left: 1.5rem;
+    vertical-align: middle;
+}
+
+.chat-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgb(48, 48, 48);
+}
+
+.chat-text {
+    font-style: italic;
+    width: 400px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: rgb(117, 117, 117);
+}
+
+.chat-notification {
+    float: right;
+    vertical-align: middle;
+}
+
+.chat-notification-circle {
+    border-radius: 300px;
+    background-color: rgb(31, 19, 99);
+    padding: 0.5rem;
+    color: #fff;
+    vertical-align: middle;
+}
+
+@media(max-width: 30rem) {
+    .chat-text {
+        width: 100px;
+    }
+}

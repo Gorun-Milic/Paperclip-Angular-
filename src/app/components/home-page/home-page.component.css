@@ -49,6 +49,7 @@
     border-radius: 0.7rem;
     height: 20rem;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 .content-box img {
@@ -178,7 +179,7 @@
     /* YouTube iframe */
     
     .you-tube-iframe {
-        width: 300px;
+        width: 230px;
     }
 
 }
