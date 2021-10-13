@@ -1,0 +1,134 @@
+.create-offer-box {
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: rgb(248, 248, 248);
+    box-shadow: 1px 1px 10px #cfcfcf;
+    text-align: center;
+    /* vertical-align: middle; */
+}
+
+.col {
+    align-items: center;
+    vertical-align: middle;
+}
+
+.product-box {
+    display: inline-block;
+    position: relative;
+    width: 17rem;
+    height: 23rem;
+    border: dashed #353535 0.3rem;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin: 1rem 2rem;
+}
+
+.box-content {
+    position: absolute;
+    top: 40%;
+    margin: auto;
+    font-size: 1.5rem;
+    color:#353535;
+    text-align: center;
+}
+
+.product-box:hover {
+    cursor: pointer;
+}
+
+.arrow-box {
+    display: inline-block;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 10px #cfcfcf;
+    width: 4rem;
+    height: 4rem;
+    margin: auto;
+}
+
+.card {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 1rem 2rem;
+
+    width: 17rem;
+    text-align: center;
+    background-color: rgb(243, 243, 243);
+    color: rgb(36, 36, 36);
+    box-shadow: 1px 1px 20px #a5a5a5;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 17rem;
+}
+
+.btn-box {
+    display: block;
+    margin-top: 1rem;
+}
+
+@media(max-width: 60rem) {
+
+    .product-box {
+        display: inline-block;
+        width: 10rem;
+        height: 16rem;
+        border: dashed #353535 0.2rem;
+        margin: auto;
+    }
+
+    .arrow-box {
+        display: inline-block;
+    }
+
+    .box-content {
+        font-size: 0.8rem;
+    }
+
+    .card {
+        display: inline-block;
+        width: 10rem;
+        margin: auto;
+    }
+
+    .card-img-top {
+        height: 10rem;
+    }
+
+
+}
+
+
+@media(max-width: 40rem) {
+
+    .product-box {
+        display: block;
+        width: 10rem;
+        height: 16rem;
+        border: dashed #353535 0.2rem;
+        margin: auto;
+    }
+
+    .arrow-box {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .box-content {
+        font-size: 0.8rem;
+    }
+
+    .card {
+        display: block;
+        width: 10rem;
+        margin: auto;
+    }
+
+    .card-img-top {
+        height: 10rem;
+    }
+
+}

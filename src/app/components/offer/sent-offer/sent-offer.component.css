@@ -1,0 +1,45 @@
+.offer {
+    background-color: rgb(251, 251, 251);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    box-shadow: 1px 1px 10px rgb(196, 196, 196);
+}
+
+.col-4 {
+    display: flex;
+    align-items: center;
+}
+
+.first-product {
+    display: inline-block;
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+}
+
+.second-product {
+    display: inline-block;
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+}
+
+.arrows {
+    display: inline-block;
+    margin: 0rem 1rem;
+}
+
+.btn {
+    margin: 0rem 0.2rem;
+}
+
+.receiver-info {
+    color: rgb(131, 131, 131);
+}
+
+.offer-image {
+    border: solid rgb(134, 134, 134) 0.15rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 18px;
+    object-fit: cover;
+}

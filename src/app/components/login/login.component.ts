@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginDto } from 'src/app/dto/user/loginDto';
 import { UserStorageService } from 'src/app/services/user-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, 
               private userStorageService: UserStorageService,
-              private router: Router) { }
+              private router: Router,
+              private toastrService: ToastrService) { }
 
   ngOnInit() {
 
@@ -55,11 +57,13 @@ export class LoginComponent implements OnInit {
           this.userService.getUserFromJwt().subscribe(
             (res)=>{
               this.userStorageService.saveUser(res);
+              this.toastrService.success('Welcome', 'Welcome');
               this.router.navigate(['my-profile']);
             }
           )
         }),
         (err=>{
+          this.toastrService.error('Wrong Credentials', 'Try again');
           console.error('Error while login!');
         })
       );

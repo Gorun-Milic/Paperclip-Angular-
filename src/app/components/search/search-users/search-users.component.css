@@ -1,5 +1,5 @@
 .card {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(250, 250, 250);
     color: rgb(36, 36, 36);
     margin: 1rem;
     box-shadow: 5px 5px 20px #aaaaaa;
@@ -35,7 +35,7 @@
 }
 
 .form-box {
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(250, 250, 250);
     /* background-color: rgb(82, 82, 82); */
     /* color: #fff; */
     padding: 2rem;

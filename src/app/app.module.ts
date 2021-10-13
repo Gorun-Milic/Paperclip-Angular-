@@ -30,6 +30,15 @@ import { MessageDialogComponent } from './components/message-dialog/message-dial
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatDirective } from './directives/chat.directive';
 import { MessageCountDirective } from './directives/message-count.directive';
+import { ToastrModule } from 'ngx-toastr';
+import { CreateOfferComponent } from './components/offer/create-offer/create-offer.component';
+import { ReceivedOfferComponent } from './components/offer/received-offer/received-offer.component';
+import { SentOfferComponent } from './components/offer/sent-offer/sent-offer.component';
+import { ProductsDialogComponent } from './components/offer/products-dialog/products-dialog.component';
+import { ViewSentOfferComponent } from './components/offer/view-sent-offer/view-sent-offer.component';
+import { ViewReceivedOfferComponent } from './components/offer/view-received-offer/view-received-offer.component';
+import { AcceptOfferDialogComponent } from './components/offer/accept-offer-dialog/accept-offer-dialog.component';
+import { RejectOfferDialogComponent } from './components/offer/reject-offer-dialog/reject-offer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +64,17 @@ import { MessageCountDirective } from './directives/message-count.directive';
     MessageDialogComponent,
     ChatListComponent,
     ChatDirective,
-    MessageCountDirective
+    MessageCountDirective,
+    CreateOfferComponent,
+    ReceivedOfferComponent,
+    SentOfferComponent,
+    ProductsDialogComponent,
+    ViewSentOfferComponent,
+    ViewReceivedOfferComponent,
+    AcceptOfferDialogComponent,
+    RejectOfferDialogComponent
   ],
-  entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent, MessageDialogComponent],
+  entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent, MessageDialogComponent, ProductsDialogComponent, AcceptOfferDialogComponent, RejectOfferDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -65,7 +82,14 @@ import { MessageCountDirective } from './directives/message-count.directive';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 1500,
+        progressBar: true,
+        progressAnimation: 'increasing'
+      }
+    )
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true}],
   bootstrap: [AppComponent]

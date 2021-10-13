@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.user.firstName + "'s products"}}</h2>
+
+<mat-dialog-content>
+
+    <div class="product-box" *ngFor="let product of products;  index as i">
+        <div class="card" style="width: 17rem;">
+            <img class="card-img-top" *ngIf="!product.photo; else elseBlock" src="../../../../assets/images/no-photo.png">
+            <ng-template #elseBlock>
+                <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product.photo}}">
+            </ng-template>
+            <div class="card-body" (click)="chooseProduct(i)">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.category.name}}</p>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

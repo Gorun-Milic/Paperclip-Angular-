@@ -29,7 +29,7 @@ export class SaveDirective implements OnInit {
 
     if (this.user.id===this.product.user.id) {
       // this.elementRef.nativeElement.style.display = 'none';
-      this.elementRef.nativeElement.style.backgroundColor = '#919191';
+      this.elementRef.nativeElement.style.backgroundColor = '#ffff';
       this.elementRef.nativeElement.innerText = "My Product";
     }else {
       this.isSaved();

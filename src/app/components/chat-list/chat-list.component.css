@@ -17,6 +17,7 @@
 }
 
 .chat-image {
+    object-fit: cover;
     border: solid rgb(134, 134, 134) 0.15rem;
     width: 3rem;
     height: 3rem;

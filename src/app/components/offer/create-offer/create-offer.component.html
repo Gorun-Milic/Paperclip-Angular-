@@ -1,0 +1,58 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="container">
+
+    <div class="create-offer-box">
+
+
+        <div class="product-box" *ngIf="!displayProduct1" (click)="openHisProductsDialog()">
+            <div class="box-content">
+                CLICK TO CHOOSE PRODUCT
+            </div>
+        </div>
+        
+        <div class="card" *ngIf="displayProduct1">
+            <img class="card-img-top" *ngIf="!product1.photo; else elseBlock1" src="../../../../assets/images/no-photo.png">
+                <ng-template #elseBlock1>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product1.photo}}">
+                </ng-template>
+            <div class="card-body">
+                <h5 class="card-title">{{product1.name}}</h5>
+                <p class="card-text">{{product1.category.name}}</p>
+            </div>
+        </div>
+            
+
+        <div class="arrow-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+        </div>
+
+
+        <div class="product-box" *ngIf="!displayProduct2" (click)="openMyProductsDialog()">
+            <div class="box-content">
+                <!-- <button class="btn btn-primary">Choose product</button> -->
+                CLICK TO CHOOSE PRODUCT
+            </div>
+        </div>
+
+        <div class="card" *ngIf="displayProduct2">
+            <img class="card-img-top" *ngIf="!product2.photo; else elseBlock2" src="../../../../assets/images/no-photo.png">
+                <ng-template #elseBlock2>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product2.photo}}">
+                </ng-template>
+            <div class="card-body">
+                <h5 class="card-title">{{product2.name}}</h5>
+                <p class="card-text">{{product2.category.name}}</p>
+            </div>
+        </div>
+
+        <div class="btn-box">
+            <button class="btn btn-success" [disabled]='buttonDisabled' (click)="sendOffer()">Send Offer</button>
+        </div>
+
+
+    </div>
+
+</div>

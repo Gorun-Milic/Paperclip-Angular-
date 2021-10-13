@@ -1,0 +1,54 @@
+.offer {
+    background-color: rgb(251, 251, 251);
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    box-shadow: 1px 1px 10px rgb(196, 196, 196);
+}
+
+.col-4 {
+    display: flex;
+    align-items: center;
+}
+
+.first-product {
+    display: inline-block;
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+}
+
+.second-product {
+    display: inline-block;
+    font-weight: 500;
+    color: rgb(61, 61, 61);
+}
+
+.arrows {
+    display: inline-block;
+    margin: 0rem 0.6rem;
+}
+
+.btn {
+    margin-right: 0.4rem;
+}
+
+.sender-info {
+    color: rgb(129, 129, 129);
+}
+
+.offer-image {
+    border: solid rgb(134, 134, 134) 0.15rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 18px;
+    object-fit: cover;
+}
+
+.new-offer {
+    display: inline-block;
+    background-color: rgb(31, 19, 99);
+    color: #fff;
+    padding: 0.3rem;
+    border-radius: 9px;
+    font-size: 0.8rem;
+}

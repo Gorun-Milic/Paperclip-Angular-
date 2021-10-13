@@ -35,7 +35,7 @@
                 <ng-template #elseBlock>
                     <img class="card-img-top" src="{{'data:image/jpeg;base64,' + product.photo}}">
                 </ng-template>
-                <div class="card-body">
+                <div class="card-body" (click)="showProduct(product.id)">
                     <h5 class="card-title">{{product.name}}</h5>
                     <p class="card-text">{{product.category.name}}</p>
                 </div>

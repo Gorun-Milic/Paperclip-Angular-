@@ -5,6 +5,7 @@ import { Notification } from 'src/app/dto/notification/notification';
 import { User } from 'src/app/dto/user/user';
 import { MessageService } from 'src/app/services/message.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { OfferService } from 'src/app/services/offer.service';
 import { UserStorageService } from 'src/app/services/user-storage.service';
 import { NotificationsDialogComponent } from '../../notifications-dialog/notifications-dialog.component';
 
@@ -27,16 +28,25 @@ export class InnerNavigationComponent implements OnInit {
   @ViewChild('navItemNotification', {static: false})
   navItemNotification;
 
+  @ViewChild('offerCountElement', {static: false})
+  offerCountElement
+
+  @ViewChild('navItemOffer', {static: false})
+  navItemOffer
+
   user: User;
   notificationCount: number = 0;
   notifications: Notification[];
 
   newMessagesCount: number = 0;
 
+  offerCount: number = 0;
+
   constructor(
     private notificationService: NotificationService,
     private userStorageService: UserStorageService,
     private messageService: MessageService,
+    private offerService: OfferService,
     private dialog: MatDialog
   ) { }
   
@@ -51,14 +61,15 @@ export class InnerNavigationComponent implements OnInit {
     
     this.user = this.userStorageService.getUser();
 
-    const obs$ = timer(0, 2000);
+    // const obs$ = timer(0, 2000);
 
-    obs$.subscribe(
-      (time)=>{
-        this.getNotifications();
-        this.countNewMessages();
-      }
-    );
+    // obs$.subscribe(
+    //   (time)=>{
+    //     this.getNotifications();
+    //     this.countNewMessages();
+    //     this.countNewOffers();
+    //   }
+    // );
   }
 
   getNotifications() {
@@ -94,6 +105,18 @@ export class InnerNavigationComponent implements OnInit {
     );
   }
 
+  countNewOffers() {
+    this.offerService.countNewOffers(this.user).subscribe(
+      (res)=>{
+        this.offerCount = res;
+        this.setStyleOffer();
+      },
+      (err)=>{
+        console.error(err);
+      }
+    );
+  }
+
 
   // Element je po defaultu display none, tako da svi elementi u navigaciji imaju padding 0.2rem. Onog trenutka kad
   // se countuje broj poruka, ako se ispostavi da ima vise od 0 poruka notifikacija postaje display inline-block
@@ -116,6 +139,16 @@ export class InnerNavigationComponent implements OnInit {
     }else {
       this.notificationCountElement.nativeElement.style.display = 'inline-block';
       this.navItemNotification.nativeElement.style.padding = '0rem';
+    }
+  }
+
+  setStyleOffer() {
+    if (this.offerCount===0) {
+      this.offerCountElement.nativeElement.style.display = 'none';
+      this.navItemOffer.nativeElement.style.padding = '0.2rem';
+    }else {
+      this.offerCountElement.nativeElement.style.display = 'inline-block';
+      this.navItemOffer.nativeElement.style.padding = '0rem';
     }
   }
 

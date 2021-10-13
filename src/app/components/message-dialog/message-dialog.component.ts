@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 import { Chat } from 'src/app/dto/chat/chat';
 import { Message } from 'src/app/dto/message/message';
 import { ChatService } from 'src/app/services/chat.service';
@@ -19,7 +20,8 @@ export class MessageDialogComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {chat: Chat},
     private chatService: ChatService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -31,9 +33,10 @@ export class MessageDialogComponent implements OnInit {
     message.seen = 0;
     this.messageService.addMessage(message).subscribe(
       (res)=>{
+        this.toastrService.success("Message was sent", "Success");
       },
       (err)=>{
-        console.error(err);
+        this.toastrService.error("Message not sent", "Error");
       }
     )
   }

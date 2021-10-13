@@ -1,0 +1,43 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="container">
+
+    <div class="create-offer-box">
+
+
+        
+        <div class="card" (click)="showProduct(offer.offeredProduct.id)">
+            <img class="card-img-top" *ngIf="!offer.offeredProduct.photo; else elseBlock1" src="../../../../assets/images/no-photo.png">
+                <ng-template #elseBlock1>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + offer.offeredProduct.photo}}">
+                </ng-template>
+            <div class="card-body">
+                <h5 class="card-title">{{offer.offeredProduct.name}}</h5>
+                <p class="card-text">{{offer.offeredProduct.category.name}}</p>
+            </div>
+        </div>
+            
+
+        <div class="arrow-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+            </svg>
+        </div>
+
+
+        <div class="card" (click)="showProduct(offer.receivedProduct.id)">
+            <img class="card-img-top" *ngIf="!offer.receivedProduct.photo; else elseBlock2" src="../../../../assets/images/no-photo.png">
+                <ng-template #elseBlock2>
+                    <img class="card-img-top" src="{{'data:image/jpeg;base64,' + offer.receivedProduct.photo}}">
+                </ng-template>
+            <div class="card-body">
+                <h5 class="card-title">{{offer.receivedProduct.name}}</h5>
+                <p class="card-text">{{offer.receivedProduct.category.name}}</p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>

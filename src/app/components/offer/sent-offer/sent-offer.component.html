@@ -1,0 +1,44 @@
+<app-inner-navigation></app-inner-navigation>
+
+<div class="container">
+    
+    <div class="offer" *ngFor="let offer of offers" (click)="showOffer(offer.id)">
+        <div class="row">
+            <div class="col-lg-1 col-md-2 col-sm-2">
+                    <img class="offer-image" *ngIf="!offer.receivedProduct.photo; else elseBlock" src="../../../../assets/images/no-photo.png">
+                    <ng-template #elseBlock>
+                        <img class="offer-image" src="{{'data:image/jpeg;base64,' + offer.receivedProduct.photo}}">
+                    </ng-template>
+            </div>
+
+            <div class="col-lg-11 col-md-10 col-sm-10">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="first-product">
+                            {{offer.offeredProduct.name}}
+                        </div>
+                        <div class="arrows">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+                            </svg>
+                        </div>
+                        <div class="second-product">
+                            {{offer.receivedProduct.name}}
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="row">
+                    <div class="col receiver-info">
+                        {{"--  " + offer.receiver.firstName + " " + offer.receiver.lastName}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+

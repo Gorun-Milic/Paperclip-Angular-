@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/dto/product/product';
 import { ProductWithPhoto } from 'src/app/dto/product/productWithPhoto';
 import { User } from 'src/app/dto/user/user';
@@ -28,7 +29,8 @@ export class MyProfileComponent implements OnInit {
   constructor(private userStorageService: UserStorageService, 
               private dialog: MatDialog,
               private productService: ProductService,
-              private userService: UserService
+              private userService: UserService,
+              private router: Router
               ) { }
 
   ngOnInit() {
@@ -81,6 +83,10 @@ export class MyProfileComponent implements OnInit {
         console.error("Can not change photo");
       }
     );
+  }
+
+  showProduct(id: string) {
+    this.router.navigate(['/view-product', id]);
   }
 
 }

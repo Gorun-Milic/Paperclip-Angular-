@@ -90,5 +90,9 @@ export class ViewUserComponent implements OnInit {
 
   }
 
+  sendOffer() {
+    this.router.navigate(['/create-offer', this.userId]);
+  }
+
 
 }

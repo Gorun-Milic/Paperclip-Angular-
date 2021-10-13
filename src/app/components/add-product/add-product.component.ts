@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/dto/category/category';
 import { Product } from 'src/app/dto/product/product';
 import { User } from 'src/app/dto/user/user';
@@ -23,6 +24,7 @@ export class AddProductComponent implements OnInit {
   selectedFile;
 
   constructor(private categoryService: CategoryService, 
+              private toastrService: ToastrService,
               private userStorageService: UserStorageService, 
               private productService: ProductService,
               public dialogRef: MatDialogRef<AddProductComponent>) { }
@@ -46,11 +48,11 @@ export class AddProductComponent implements OnInit {
     formData.append('product', JSON.stringify(this.product));
     this.productService.addProduct(formData).subscribe(
       (res)=>{
-        alert('Product was added.');
+        this.toastrService.success("Product was added", "Success");
         this.dialogRef.close('yes');
       },
       (err)=>{
-        alert('Can not add product.');
+        this.toastrService.error("Product was not added", "Error");
         this.dialogRef.close()
       }
     );
