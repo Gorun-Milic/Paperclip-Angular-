@@ -16,13 +16,15 @@ import { AddProductComponent } from '../add-product/add-product.component';
 })
 export class MyProfileComponent implements OnInit {
 
-  user: User;
-  myProducts: ProductWithPhoto[];
+  user: User = new User();
+  myProducts: ProductWithPhoto[] = [];
 
   //photo data
   public selectedFile;
   convertedImage = undefined;
   buttonDisabled = true;
+
+  showMessage = true;
 
   
 
@@ -39,26 +41,32 @@ export class MyProfileComponent implements OnInit {
 
   getUserData() {
     this.user = this.userStorageService.getUser();
-    this.productService.getProductsOfUser(this.userStorageService.getUser()).subscribe(
+    this.getProducts();
+    if (this.user.photo != undefined) {
+      this.convertedImage = 'data:image/jpeg;base64,' + this.user.photo;
+    }  
+  }
+
+  getProducts() {
+    // alert("Izlistavamo proizvode");
+    this.productService.getProductsOfUser(this.user).subscribe(
       (res)=>{
         this.myProducts = res;
       },
       (err)=>{
+        alert("Dobavljanje nije uspelo");
         console.error("Some error occured!");
       }
     );
-    if (this.user.photo != undefined) {
-      this.convertedImage = 'data:image/jpeg;base64,' + this.user.photo;
-    }  
+
   }
 
   openDialog() {
     let dialogRef = this.dialog.open(AddProductComponent);
 
     dialogRef.afterClosed().subscribe(
-      (res) => {
-        if (res === "yes") {
-          this.getUserData();        }
+      result => {
+        this.getProducts();
       }
     )
   }
@@ -87,6 +95,12 @@ export class MyProfileComponent implements OnInit {
 
   showProduct(id: string) {
     this.router.navigate(['/view-product', id]);
+  }
+
+  refreshComponent() {
+    this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/my-profile']);
+    });
   }
 
 }

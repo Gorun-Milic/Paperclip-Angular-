@@ -12,7 +12,7 @@
 
           <div class="content-part">
             <h3>{{user.firstName + " " + user.lastName}}</h3>
-            <div>{{user.city + "(" + user.country + ")"}}</div>
+            <div>{{user.city.name + "(" + user.city.country.name + ")"}}</div>
             <div>{{user.email}}</div>
           </div>
     </div>
@@ -47,7 +47,7 @@
                     <p class="card-text">{{product.category.name}}</p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Save</li>
+                    <li class="list-group-item" appSave [product]="product">Save</li>
                 </ul>
             </div>
         </div>

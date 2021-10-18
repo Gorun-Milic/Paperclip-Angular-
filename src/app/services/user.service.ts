@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { JwtDto } from '../dto/jwtDto';
 import { LoginDto } from '../dto/user/loginDto';
 import { SearchUser } from '../dto/user/searchUser';
+import { SearchUserParams } from '../dto/user/searchUserParams';
 import { User } from '../dto/user/user';
 import { UserPagination } from '../dto/user/userPagination';
 
@@ -25,10 +26,6 @@ export class UserService {
     return this.http.post<User>('http://localhost:8080/user/registration', user);
   }
 
-  // login(user: LoginDto): Observable<User> {
-  //   return this.http.post<User>('http://localhost:8080/user/login', user);
-  // }
-
   login(loginDto: LoginDto): Observable<JwtDto> {
     return this.http.post<JwtDto>('http://localhost:8080/auth/login', loginDto);
   }
@@ -43,5 +40,9 @@ export class UserService {
 
   pagination(searchUser: SearchUser): Observable<UserPagination> {
     return this.http.post<UserPagination>('http://localhost:8080/user/pagination', searchUser);
+  }
+
+  pagination1(searchUser: SearchUserParams): Observable<UserPagination> {
+    return this.http.post<UserPagination>('http://localhost:8080/user/pagination1', searchUser);
   }
 }

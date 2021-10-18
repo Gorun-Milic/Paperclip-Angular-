@@ -13,7 +13,7 @@ import { UserStorageService } from 'src/app/services/user-storage.service';
 export class ChatListComponent implements OnInit {
 
   user: User = new User();
-  chats: Chat[];
+  chats: Chat[] = [];
 
   constructor(
         private chatService: ChatService,

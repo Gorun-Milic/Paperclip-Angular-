@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Category } from 'src/app/dto/category/category';
 import { ProductWithPhoto } from 'src/app/dto/product/productWithPhoto';
 import { SearchProduct } from 'src/app/dto/product/searchProduct';
+import { SearchProductParams } from 'src/app/dto/product/searchProductParams';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -16,7 +17,10 @@ export class SearchProductsComponent implements OnInit {
   categories: Category[];
   products: ProductWithPhoto[];
   total: number;
-  searchProduct: SearchProduct = new SearchProduct('', undefined, true, 1, 16);
+
+  searchProductParam: SearchProductParams = new SearchProductParams('', 'All', 'All', 1, 8);
+
+  displayFilters = false;
 
   constructor(private productService: ProductService,
               private categoryService: CategoryService,
@@ -28,7 +32,7 @@ export class SearchProductsComponent implements OnInit {
       (err)=>{console.error('Can not find categories.')}
     );
 
-    this.productService.pagination(this.searchProduct).subscribe(
+    this.productService.pagination1(this.searchProductParam).subscribe(
       (res)=>{
         this.products = res.products;
         this.total = res.total;
@@ -39,30 +43,40 @@ export class SearchProductsComponent implements OnInit {
     );
   }
 
+  clickSearch() {
+    this.searchProductParam.currentPage = 1;
+    this.searchProducts();
+  }
+
   searchProducts() {
-    this.productService.pagination(this.searchProduct).subscribe(
+    this.productService.pagination1(this.searchProductParam).subscribe(
       (res=>{
         this.products = res.products;
+        this.total = res.total;
       })
     );
   }
 
   previousPage() {
-    if (this.searchProduct.currentPage>1) {
-      this.searchProduct.currentPage -= 1;
+    if (this.searchProductParam.currentPage>1) {
+      this.searchProductParam.currentPage -= 1;
       this.searchProducts();
     }
   }
 
   nextPage() {
-    if (this.total> this.searchProduct.currentPage * this.searchProduct.pageSize) {
-      this.searchProduct.currentPage += 1;
+    if (this.total> this.searchProductParam.currentPage * this.searchProductParam.pageSize) {
+      this.searchProductParam.currentPage += 1;
       this.searchProducts();
     }
   }
 
   showProduct(id: string) {
     this.router.navigate(['/view-product', id]);
+  }
+
+  showFilter() {
+    this.displayFilters = !this.displayFilters;
   }
 
 }

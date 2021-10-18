@@ -49,7 +49,7 @@ export class AddProductComponent implements OnInit {
     this.productService.addProduct(formData).subscribe(
       (res)=>{
         this.toastrService.success("Product was added", "Success");
-        this.dialogRef.close('yes');
+        this.dialogRef.close();
       },
       (err)=>{
         this.toastrService.error("Product was not added", "Error");

@@ -1,6 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { City } from 'src/app/dto/city/city';
+import { Country } from 'src/app/dto/country/country';
 import { User } from 'src/app/dto/user/user';
+import { CityService } from 'src/app/services/city.service';
+import { CountryService } from 'src/app/services/country.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,60 +17,74 @@ export class RegistrationComponent implements OnInit {
 
   @Output() onRegister: EventEmitter<any> = new EventEmitter<any>();
   user = new User();
-  registrationForm: FormGroup;
-  states = ['Algeria', 'Belgium', 'Belarus', 'Brasil', 'Chile', 'Croatia', 'Cyprus', 'Denmark', 'England', 'Finland', 'Ghana', 'Serbia', 'Slovakia', 'Sweden', 'Tunis', 'Wels'];
+  countries: Country[] = [];
+  cities: City[] = [];
 
-  constructor(private userService: UserService) { }
+  selectedCountry = new Country();
+  selectedCity = new City();
+
+  constructor(
+    private userService: UserService,
+    private countryService: CountryService,
+    private cityService: CityService,
+    private toastrService: ToastrService
+    ) { }
 
   ngOnInit() {
-    this.registrationForm = new FormGroup(
-      {
-        'firstName': new FormControl(null, Validators.required),
-        'lastName': new FormControl(null, Validators.required),
-        'email': new FormControl(
-          null, 
-          [
-            Validators.required, 
-            Validators.email
-          ]
-        ),
-        'password': new FormControl(
-          null,
-          [
-            Validators.required,
-            Validators.minLength(8)
-          ]
-        ),
-        'country': new FormControl(null, Validators.required),
-        'city': new FormControl(null, Validators.required),
-        'zipcode': new FormControl(null, Validators.required),
-      }
-    );
+    this.getCountries();
   }
 
-  // register() {
-  //   console.log('sdasdad');
-  //   this.userService.register(this.user).subscribe(
-  //     (res)=>{console.log('Responce: ' + res)},
-  //     (err)=>{console.log('Error: ' + err)}
-  //   );
-  // }
-
-  register() {
-    console.log('sdasdad');
-    if (this.registrationForm.valid) {
-      this.user = this.registrationForm.value;
+  reg(regForm: NgForm) {
+    if(regForm.valid) {
+      this.initalizeUser(regForm.value);
       this.userService.register(this.user).subscribe(
         (res)=>{
-          alert('Responce: ' + res);
+          this.toastrService.success("Successful registration", "Thanks for joining us");
           this.onRegister.emit();
         },
-        (err)=>{alert('Error: ' + err)}
-      );
-    }else {
-      alert("Form not valid");
+        (err)=>{
+          this.toastrService.error("Unsuccessful registration", "Try again");
+        }
+      )
     }
-    
+  }
+
+  initalizeUser(formValue) {
+    this.user.firstName = formValue.firstName;
+    this.user.lastName = formValue.lastName;
+    this.user.email = formValue.email;
+    this.user.password = formValue.password;
+    this.user.city = formValue.city;
+    this.user.zipcode = formValue.zipcode;
+  }
+
+  getCountries() {
+    this.countryService.findCountries().subscribe(
+      (res)=>{
+        this.countries = res;
+        this.selectedCountry = this.countries[0]; 
+        this.getCities(this.countries[0].name);
+      },
+      (err)=>{
+        console.error(err);
+      }
+    )
+  }
+
+  onChange() {
+    this.getCities(this.selectedCountry.name);
+  }
+
+  getCities(countryName: string) {
+    this.cityService.findCities(countryName).subscribe(
+      (res)=>{
+        this.cities = res;
+        this.selectedCity = this.cities[0];
+      },
+      (err)=>{
+        console.error(err);
+      }
+    );
   }
 
 }

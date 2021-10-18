@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Save } from 'src/app/dto/save/save';
 import { User } from 'src/app/dto/user/user';
 import { SaveService } from 'src/app/services/save.service';
@@ -16,7 +17,8 @@ export class SavedProductsComponent implements OnInit {
 
   constructor(
     private userStorageService: UserStorageService,
-    private saveService: SaveService
+    private saveService: SaveService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,10 @@ export class SavedProductsComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  showProduct(id: string) {
+    this.router.navigate(['/view-product', id]);
   }
 
 }

@@ -1,6 +1,10 @@
 <app-inner-navigation></app-inner-navigation>
 
 <div class="container">
+
+    <div *ngIf="offers.length===0" class="empty-list-message">
+        There are no sent offers yet
+    </div>
     
     <div class="offer" *ngFor="let offer of offers" (click)="showOffer(offer.id)">
         <div class="row">

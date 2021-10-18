@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { interval, timer } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, Subject, Subscription, timer } from 'rxjs';
 import { Notification } from 'src/app/dto/notification/notification';
 import { User } from 'src/app/dto/user/user';
 import { MessageService } from 'src/app/services/message.service';
@@ -14,7 +15,7 @@ import { NotificationsDialogComponent } from '../../notifications-dialog/notific
   templateUrl: './inner-navigation.component.html',
   styleUrls: ['./inner-navigation.component.css']
 })
-export class InnerNavigationComponent implements OnInit {
+export class InnerNavigationComponent implements OnInit, OnDestroy {
 
   @ViewChild('notificationCountElement', {static: false})
   notificationCountElement;
@@ -42,34 +43,36 @@ export class InnerNavigationComponent implements OnInit {
 
   offerCount: number = 0;
 
+  obs$: Subscription;
+
   constructor(
     private notificationService: NotificationService,
+    private router: Router,
     private userStorageService: UserStorageService,
     private messageService: MessageService,
     private offerService: OfferService,
     private dialog: MatDialog
   ) { }
+
+
+  ngOnDestroy(): void {
+    this.obs$.unsubscribe();
+  }
   
-  // ngAfterViewInit(): void {
-  //   this.setStyleMessages();
-  //   this.setStyleNotifications();
-  // }
 
   ngOnInit() {
-    // this.messageCountElement.nativeElement.style.display = 'none';
-    // this.notificationCountElement.nativeElement.style.display = 'none';
     
     this.user = this.userStorageService.getUser();
 
-    // const obs$ = timer(0, 2000);
+    const obs$ = timer(0, 2000)
 
-    // obs$.subscribe(
-    //   (time)=>{
-    //     this.getNotifications();
-    //     this.countNewMessages();
-    //     this.countNewOffers();
-    //   }
-    // );
+    this.obs$ = timer(0,2000).subscribe(
+      (time)=>{
+        this.getNotifications();
+        this.countNewMessages();
+        this.countNewOffers();
+      }
+    );
   }
 
   getNotifications() {
@@ -152,5 +155,10 @@ export class InnerNavigationComponent implements OnInit {
     }
   }
 
+  logout() {
+    sessionStorage.removeItem('user_key');
+    localStorage.removeItem('jwt-token');
+    this.router.navigate(['home']);
+  }
 
 }

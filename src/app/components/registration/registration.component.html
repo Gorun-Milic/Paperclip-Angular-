@@ -1,48 +1,56 @@
 <div class="container">
-    <form class="form-box" [formGroup]="registrationForm">
+    <form class="form-box" #regForm="ngForm" (ngSubmit)="reg(regForm)" novalidate>
+        
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" formControlName="firstName"  name="firstName">
-            <small *ngIf="registrationForm.get('firstName').invalid && registrationForm.get('firstName').touched" class="text-danger">First Name is required</small>
+            <input type="text" class="form-control" required name="firstName" ngModel #firstName="ngModel">
+            <small *ngIf="firstName.invalid && firstName.touched" class="text-danger">First Name is required</small>
         </div>
+        
         <div class="mb-3">
             <label for="lastName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" formControlName="lastName" name="lastName">
-            <small *ngIf="registrationForm.get('lastName').invalid && registrationForm.get('lastName').touched" class="text-danger">Last Name is required</small>
-
+            <input type="text" class="form-control" required ngModel name="lastName" #lastName="ngModel">
+            <small *ngIf="lastName.invalid && lastName.touched" class="text-danger">Last Name is required</small>
         </div>
+       
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" formControlName="email" name="email">
-            <small *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched" class="text-danger">Email is required</small>
+            <input type="email" class="form-control" required email ngModel name="email" #email="ngModel">
+            <small *ngIf="email.invalid && email.touched" class="text-danger">Email is required</small>
 
         </div>
+        
         <div class="mb-3">
             <label for="password" class="col-sm-2 col-form-label">Password</label>
-            <input type="password" class="form-control" formControlName="password" name="password">
-            <small *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched" class="text-danger">Password is required(8 characters min)</small>
-
+            <input type="password" class="form-control" ngModel name="password" required minlength="8" #password="ngModel">
+            <small *ngIf="password.invalid && password.touched" class="text-danger">Password is required(8 characters min)</small>
         </div>
+        
         <div class="mb-3">
-            <label for="state" class="form-label">State</label>
-            <select class="form-select" formControlName="country"  name="country">
-                <option *ngFor="let state of states">{{state}}</option>
+            <label for="country" class="form-label">Country</label>
+            <select class="form-select" required name="country" [(ngModel)]="selectedCountry" #country="ngModel" (change)="onChange($event.target.value)">
+                <option *ngFor="let c of countries" [ngValue]="c">{{c.name}}</option>
             </select>
-            <small *ngIf="registrationForm.get('country').invalid && registrationForm.get('country').touched" class="text-danger">Country is required</small>
+            {{c}}
+            <small *ngIf="country.invalid && country.touched" class="text-danger">Country is required</small>
 
         </div>
+        
         <div class="mb-3">
             <label for="city" class="form-label">City</label>
-            <input type="text" class="form-control" formControlName="city"  name="city">
-            <small *ngIf="registrationForm.get('city').invalid && registrationForm.get('city').touched" class="text-danger">City is required</small>
+            <select class="form-select" name="city" required [(ngModel)]="selectedCity" #city="ngModel">
+                <option *ngFor="let city of cities" [ngValue]="city">{{city.name}}</option>
+            </select>
+            <small *ngIf="city.invalid && city.touched" class="text-danger">Country is required</small>
 
         </div>
+
         <div class="mb-3">
             <label for="zipcode" class="form-label">Zip Code</label>
-            <input type="number" class="form-control" formControlName="zipcode"  name="zipcode">
-            <small *ngIf="registrationForm.get('zipcode').invalid && registrationForm.get('zipcode').touched" class="text-danger">Zipcode is required</small>
-
+            <input type="number" class="form-control"  required name="zipcode" ngModel #zipcode="ngModel">
+            <small *ngIf="zipcode.invalid && zipcode.touched" class="text-danger">Zipcode is required</small>
         </div>
-        <button [disabled]="registrationForm.invalid" (click)="register()" class="btn btn-primary" type="submit">Register</button>
+        <button [disabled]="regForm.form.invalid" class="btn btn-primary" type="submit">Register</button>
+
     </form>
 </div>

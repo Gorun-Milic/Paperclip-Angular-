@@ -63,7 +63,7 @@ export class ViewProductComponent implements OnInit {
         this.isLiked();
         this.getLikes();
         this.isSaved();
-        this,this.viewNotification();
+        this.viewNotification();
       },
       (err)=>{
         console.error(err);

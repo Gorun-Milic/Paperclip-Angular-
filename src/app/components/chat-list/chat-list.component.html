@@ -1,6 +1,11 @@
 <app-inner-navigation></app-inner-navigation>
 
 <div class="container">
+
+    <div *ngIf="chats.length===0" class="empty-list-message">
+        You have no chats yet
+    </div>
+
     <div class="chat" (click)="showChat(chat.id)" *ngFor="let chat of chats">    
         <div *ngIf="chat.user1.id===user.id">
             <div class="chat-image-box">

@@ -16,7 +16,7 @@ import { RejectOfferDialogComponent } from '../reject-offer-dialog/reject-offer-
 export class ReceivedOfferComponent implements OnInit {
 
   user: User;
-  offers: Offer[];
+  offers: Offer[] = [];
 
   constructor(
     private offerService: OfferService,
