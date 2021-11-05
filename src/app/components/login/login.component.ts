@@ -58,7 +58,11 @@ export class LoginComponent implements OnInit {
             (res)=>{
               this.userStorageService.saveUser(res);
               this.toastrService.success('Welcome', 'Welcome');
-              this.router.navigate(['my-profile']);
+              if (res.role==='admin') {
+                this.router.navigate(['statistics-data']);
+              }else {
+                this.router.navigate(['my-profile']);
+              }
             }
           )
         }),

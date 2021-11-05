@@ -1,5 +1,6 @@
 import { City } from "../city/city";
 import { Country } from "../country/country";
+import { Role } from "./role.enum";
 
 export class User {
     id: string;
@@ -11,6 +12,7 @@ export class User {
     city: City;
     zipcode: string;
     photo: string;
+    role: Role;
 
     constructor(){}
 }

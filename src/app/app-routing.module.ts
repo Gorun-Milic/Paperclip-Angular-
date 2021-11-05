@@ -13,6 +13,7 @@ import { SavedProductsComponent } from './components/saved-products/saved-produc
 import { SearchProductsComponent } from './components/search/search-products/search-products.component';
 import { SearchUsersComponent } from './components/search/search-users/search-users.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { StatisticsDataComponent } from './components/statistics-data/statistics-data.component';
 import { ViewProductComponent } from './components/view-product/view-product.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { JwtTokenGuard } from './guards/jwt-token.guard';
@@ -95,6 +96,11 @@ const routes: Routes = [
   {
     path: 'view-received-offer/:offerid',
     component: ViewReceivedOfferComponent,
+    canActivate: [JwtTokenGuard]
+  },
+  {
+    path: 'statistics-data',
+    component: StatisticsDataComponent,
     canActivate: [JwtTokenGuard]
   },
   {

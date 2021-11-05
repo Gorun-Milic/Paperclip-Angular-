@@ -1,0 +1,13 @@
+.statistics {
+    margin: 2rem;
+}
+
+.message-box {
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem;
+    font-style: italic;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 1px 1px 10px #cfcfcf;
+    /* border: solid 1px #818181; */
+}

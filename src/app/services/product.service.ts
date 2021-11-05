@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../dto/product/product';
 import { ProductPagination } from '../dto/product/productPagination';
+import { ProductStatistics } from '../dto/product/productStatistics';
 import { ProductWithPhoto } from '../dto/product/productWithPhoto';
 import { SearchProduct } from '../dto/product/searchProduct';
 import { SearchProductParams } from '../dto/product/searchProductParams';
@@ -37,6 +38,11 @@ export class ProductService {
 
   pagination1(searchProduct: SearchProductParams): Observable<ProductPagination> {
     return this.http.post<ProductPagination>('http://localhost:8080/product/pagination1', searchProduct);
+  }
+
+  getStatistics(): Observable<ProductStatistics[]> {
+    console.log("bla bla bla");
+    return this.http.get<ProductStatistics[]>('http://localhost:8080/product/getStatistics');
   }
 
 }

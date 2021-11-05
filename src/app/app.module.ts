@@ -39,6 +39,8 @@ import { ViewSentOfferComponent } from './components/offer/view-sent-offer/view-
 import { ViewReceivedOfferComponent } from './components/offer/view-received-offer/view-received-offer.component';
 import { AcceptOfferDialogComponent } from './components/offer/accept-offer-dialog/accept-offer-dialog.component';
 import { RejectOfferDialogComponent } from './components/offer/reject-offer-dialog/reject-offer-dialog.component';
+import { AdminSideNavigationComponent } from './components/navigation/admin-side-navigation/admin-side-navigation.component';
+import { StatisticsDataComponent } from './components/statistics-data/statistics-data.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { RejectOfferDialogComponent } from './components/offer/reject-offer-dial
     ViewSentOfferComponent,
     ViewReceivedOfferComponent,
     AcceptOfferDialogComponent,
-    RejectOfferDialogComponent
+    RejectOfferDialogComponent,
+    AdminSideNavigationComponent,
+    StatisticsDataComponent
   ],
   entryComponents: [AddProductComponent, UserListDialogComponent, NotificationsDialogComponent, MessageDialogComponent, ProductsDialogComponent, AcceptOfferDialogComponent, RejectOfferDialogComponent],
   imports: [

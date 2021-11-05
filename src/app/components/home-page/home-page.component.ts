@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,13 +10,19 @@ export class HomePageComponent implements OnInit {
 
   visible: boolean = true;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
   switch() {
     this.visible = !this.visible;
+  }
+
+  joinUs() {
+    this.router.navigate(['sign-up']);
   }
 
 }
