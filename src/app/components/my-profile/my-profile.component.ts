@@ -48,7 +48,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   getProducts() {
-    // alert("Izlistavamo proizvode");
+    // console.log("Izlistavamo proizvode");
     this.productService.getProductsOfUser(this.user).subscribe(
       (res)=>{
         this.myProducts = res;

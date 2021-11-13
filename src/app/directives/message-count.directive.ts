@@ -44,6 +44,7 @@ export class MessageCountDirective implements OnInit{
   changeElement() {
     if (this.messageNumber>0) {
       this.elementRef.nativeElement.innerText = this.messageNumber;
+      this.elementRef.nativeElement.style.display = 'inline-block';
     }else {
       this.elementRef.nativeElement.style.display = 'none';
     }

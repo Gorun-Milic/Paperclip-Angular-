@@ -128,30 +128,30 @@ export class InnerNavigationComponent implements OnInit, OnDestroy {
   setStyleMessages() {
     if (this.newMessagesCount===0) {
       this.messageCountElement.nativeElement.style.display = 'none';
-      this.navItemMessage.nativeElement.style.padding = '0.2rem';
+      // this.navItemMessage.nativeElement.style.padding = '0.2rem';
     }else {
       this.messageCountElement.nativeElement.style.display = 'inline-block';
-      this.navItemMessage.nativeElement.style.padding = '0rem';
+      // this.navItemMessage.nativeElement.style.padding = '0rem';
     }
   }
 
   setStyleNotifications() {
     if (this.notificationCount===0) {
       this.notificationCountElement.nativeElement.style.display = 'none';
-      this.navItemNotification.nativeElement.style.padding = '0.2rem';
+      // this.navItemNotification.nativeElement.style.padding = '0.2rem';
     }else {
       this.notificationCountElement.nativeElement.style.display = 'inline-block';
-      this.navItemNotification.nativeElement.style.padding = '0rem';
+      // this.navItemNotification.nativeElement.style.padding = '0rem';
     }
   }
 
   setStyleOffer() {
     if (this.offerCount===0) {
       this.offerCountElement.nativeElement.style.display = 'none';
-      this.navItemOffer.nativeElement.style.padding = '0.2rem';
+      // this.navItemOffer.nativeElement.style.padding = '0.2rem';
     }else {
       this.offerCountElement.nativeElement.style.display = 'inline-block';
-      this.navItemOffer.nativeElement.style.padding = '0rem';
+      // this.navItemOffer.nativeElement.style.padding = '0rem';
     }
   }
 

@@ -27,7 +27,9 @@
 }
 
 .chat-data {
+    position: relative;
     display: inline-block;
+    width: 90%;
     margin-left: 1.5rem;
     vertical-align: middle;
 }
@@ -47,17 +49,25 @@
     color: rgb(117, 117, 117);
 }
 
-.chat-notification {
+/* .chat-notification {
     float: right;
-    vertical-align: middle;
-}
+    vertical-align: middle; */
+    /* position: absolute;
+} */
 
 .chat-notification-circle {
-    border-radius: 300px;
-    background-color: rgb(31, 19, 99);
-    padding: 0.5rem;
+    display: none;
+    font-size: 1rem;
+    font-style: normal;
+    top: 25%;
+    right: 0%;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(0, 62, 104) , rgb(0, 33, 95));
     color: #fff;
-    vertical-align: middle;
 }
 
 .empty-list-message {
@@ -71,8 +81,23 @@
     font-style: italic;
 }
 
+@media(max-width: 50rem) {
+    .chat-data {
+        width: 75%;
+    }
+}
+
 @media(max-width: 30rem) {
     .chat-text {
         width: 100px;
     }
+
+    .chat-data {
+        width: 62%;
+    }
+
+    .chat-notification-circle {
+        top: 50%;
+    }
 }
+

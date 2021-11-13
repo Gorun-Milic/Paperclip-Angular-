@@ -1,5 +1,6 @@
 .user-block {
-    background-color: rgb(46, 46, 46);
+    /* background-color: rgb(46, 46, 46); */
+    background-image: linear-gradient(to right, rgb(5, 136, 223) , rgb(0, 89, 255));
     color: #fff;
     box-shadow: 1px 1px 8px #a1a1a1;
     padding: 1rem 2rem;

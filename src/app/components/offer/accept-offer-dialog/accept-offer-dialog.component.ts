@@ -33,8 +33,17 @@ export class AcceptOfferDialogComponent implements OnInit {
     this.doAllOperations(this.data.offer);
   }
 
-  closeDialog() {
-    this.dialogRef.close();
+  acceptAndCloseDialog() {
+    // this.dialogRef.close();
+    this.dialogRef.close({
+      accepted: true
+    });
+  }
+
+  rejectAndCloseDialog() {
+    this.dialogRef.close({
+      accepted: false
+    });
   }
 
   
@@ -50,40 +59,40 @@ export class AcceptOfferDialogComponent implements OnInit {
                     this.exchangeService.deleteOffers(offer).subscribe(
                       (res)=>{
                         this.toastrService.success('Success', 'You accepted an offer');
-                        this.closeDialog();
+                        this.acceptAndCloseDialog();
                         // this.router.navigate(['received-offer']);
                       },
                       (err)=>{
                         this.toastrService.error('Error', 'Unable to accept this offer');
-                        this.closeDialog();
+                        this.rejectAndCloseDialog();
                         // this.router.navigate(['received-offer']);
                       }
                     )
                   },
                   (err)=>{
                     this.toastrService.error('Error', 'Unable to accept this offer');
-                    this.closeDialog();
+                    this.rejectAndCloseDialog();
                     // this.router.navigate(['received-offer']);
                   }
                 )
               },
               (err)=>{
                 this.toastrService.error('Error', 'Unable to accept this offer');
-                this.closeDialog();
+                this.rejectAndCloseDialog();
                 // this.router.navigate(['received-offer']);
               }
             );
           },
           (err)=>{
             this.toastrService.error('Error', 'Unable to accept this offer');
-            this.closeDialog();
+            this.rejectAndCloseDialog();
             // this.router.navigate(['received-offer']);
           }
         )
       },
       (err)=>{
         this.toastrService.error('Error', 'Unable to accept this offer');
-        this.closeDialog();
+        this.rejectAndCloseDialog();
         // this.router.navigate(['received-offer']);
       }
     )

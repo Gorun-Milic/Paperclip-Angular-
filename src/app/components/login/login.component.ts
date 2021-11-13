@@ -57,11 +57,13 @@ export class LoginComponent implements OnInit {
           this.userService.getUserFromJwt().subscribe(
             (res)=>{
               this.userStorageService.saveUser(res);
-              this.toastrService.success('Welcome', 'Welcome');
+              // this.toastrService.success('Welcome', 'Welcome');
               if (res.role==='admin') {
                 this.router.navigate(['statistics-data']);
+                this.toastrService.info('Welcome to Admin Page', 'Hello Administrator');
               }else {
                 this.router.navigate(['my-profile']);
+                this.toastrService.success('Welcome to our website', 'Hello ' + res.firstName);
               }
             }
           )

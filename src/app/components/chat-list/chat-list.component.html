@@ -22,13 +22,9 @@
                 <div class="chat-text" appChat [chat]="chat">
                     
                 </div>
+                <div class="chat-notification-circle" appMessageCount [chat]="chat"></div>
             </div>
             
-            <div class="chat-notification">
-                <div class="chat-notification-circle" appMessageCount [chat]="chat">
-                    
-                </div>
-            </div>
         </div>
         <div *ngIf="chat.user1.id!==user.id">
             <div class="chat-image-box">
@@ -44,11 +40,7 @@
                 <div class="chat-text" appChat [chat]="chat">
                     
                 </div>
-            </div>
-            <div class="chat-notification">
-                <div class="chat-notification-circle" appMessageCount [chat]="chat">
-                    
-                </div>
+                <div class="chat-notification-circle" appMessageCount [chat]="chat"></div>
             </div>
         </div>        
     </div>

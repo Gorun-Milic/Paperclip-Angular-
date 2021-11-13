@@ -8,12 +8,18 @@
 }
 
 .notification {
-    border-radius: 20px;
-    padding: 0.2rem;
-    background-color: rgb(31, 19, 99);
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    /* background-color: rgb(31, 19, 99); */
+    background-image: linear-gradient(to right, rgb(0, 62, 104) , rgb(0, 33, 95));
     color: #fff;
     display: inline-block;
     margin: 0;
+    text-align: center;
 }
 
 .nav-item {
@@ -23,4 +29,5 @@
 .nav-item-notification {
     padding: 0.2rem;
     cursor: pointer;
+    position: relative;
 }

@@ -77,7 +77,9 @@ export class ViewReceivedOfferComponent implements OnInit {
     });
 
     dialogReference.afterClosed().subscribe(result => {
-      this.router.navigate(['received-offer']);
+      if (result.accepted==true) {
+        this.router.navigate(['received-offer']);
+      }
     });
   }
 
